@@ -48,7 +48,7 @@ class MainScreens extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              // Smaller Search Bar wrapped in GestureDetector
+              // Smaller Search Bar wrapped in GestureDetector with Hero animation
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -61,11 +61,9 @@ class MainScreens extends StatelessWidget {
                         const begin = Offset(0.0, 1.0);
                         const end = Offset(0.0, 0.0);
                         const curve = Curves.ease;
-
                         var tween = Tween(begin: begin, end: end)
                             .chain(CurveTween(curve: curve));
                         var offsetAnimation = animation.drive(tween);
-
                         return SlideTransition(
                           position: offsetAnimation,
                           child: child,
@@ -74,44 +72,48 @@ class MainScreens extends StatelessWidget {
                     ),
                   );
                 },
-                child: const AbsorbPointer(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
-                        vertical: 10.0, // Adjusts the height of the search bar
-                        horizontal: 10.0,
-                      ),
-                      prefixIcon: Icon(Icons.search, color: Colors.black),
-                      hintText: "검색.... ",
-                      hintStyle:
-                          TextStyle(color: Colors.black54, fontSize: 16.0),
-                      filled: true,
-                      fillColor: Colors.white, // Background color
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10.0),
+                child: const Hero(
+                  tag: 'searchBarHero', // Unique tag for the Hero animation
+                  child: AbsorbPointer(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical:
+                              10.0, // Adjusts the height of the search bar
+                          horizontal: 10.0,
                         ),
-                        borderSide: BorderSide(
-                          color: Colors.black, // Border color
-                          width: 2.0,
+                        prefixIcon: Icon(Icons.search, color: Colors.black),
+                        hintText: "검색.... ",
+                        hintStyle:
+                            TextStyle(color: Colors.black54, fontSize: 16.0),
+                        filled: true,
+                        fillColor: Colors.white, // Background color
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10.0),
+                          ),
+                          borderSide: BorderSide(
+                            color: Colors.black, // Border color
+                            width: 2.0,
+                          ),
                         ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10.0),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10.0),
+                          ),
+                          borderSide: BorderSide(
+                            color: Colors.black, // Border color when enabled
+                            width: 2.0,
+                          ),
                         ),
-                        borderSide: BorderSide(
-                          color: Colors.black, // Border color when enabled
-                          width: 2.0,
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10.0),
-                        ),
-                        borderSide: BorderSide(
-                          color: Colors.black, // Border color when focused
-                          width: 2.0,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10.0),
+                          ),
+                          borderSide: BorderSide(
+                            color: Colors.black, // Border color when focused
+                            width: 2.0,
+                          ),
                         ),
                       ),
                     ),

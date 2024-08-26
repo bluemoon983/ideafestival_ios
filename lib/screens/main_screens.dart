@@ -35,7 +35,7 @@ class MainScreens extends StatelessWidget {
             builder: (context) => IconButton(
               icon: const Icon(Icons.menu),
               onPressed: () {
-                Scaffold.of(context).openEndDrawer(); // Builder 안에서 컨텍스트 호출
+                Scaffold.of(context).openEndDrawer();
               },
             ),
           ),
@@ -45,16 +45,27 @@ class MainScreens extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
-              decoration: const BoxDecoration(
+            const DrawerHeader(
+              decoration: BoxDecoration(
                 color: Colors.black,
               ),
-              child: const Text(
-                '메뉴',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '메뉴',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Icon(
+                    Icons.shopping_cart,
+                    color: Colors.white,
+                    size: 20, // Adjust the size of the icon as needed
+                  ),
+                ],
               ),
             ),
             ListTile(
@@ -77,20 +88,13 @@ class MainScreens extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.account_circle),
-              title: const Text('내 페이지'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MypageScreens(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
               leading: const Icon(Icons.settings),
               title: const Text('설정'),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: const Icon(Icons.login_outlined),
+              title: const Text('로그아웃'),
               onTap: () {},
             ),
           ],

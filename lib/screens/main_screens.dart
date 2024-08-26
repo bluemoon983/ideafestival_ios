@@ -31,11 +31,70 @@ class MainScreens extends StatelessWidget {
             },
             icon: const Icon(Icons.account_circle_rounded),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.menu),
-          )
+          Builder(
+            builder: (context) => IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {
+                Scaffold.of(context).openEndDrawer(); // Builder 안에서 컨텍스트 호출
+              },
+            ),
+          ),
         ],
+      ),
+      endDrawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: const BoxDecoration(
+                color: Colors.black,
+              ),
+              child: const Text(
+                '메뉴',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text('홈'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.search),
+              title: const Text('검색'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SearchScreens(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.account_circle),
+              title: const Text('내 페이지'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MypageScreens(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('설정'),
+              onTap: () {},
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -48,7 +107,6 @@ class MainScreens extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              // Smaller Search Bar wrapped in GestureDetector with Hero animation
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -73,13 +131,12 @@ class MainScreens extends StatelessWidget {
                   );
                 },
                 child: const Hero(
-                  tag: 'searchBarHero', // Unique tag for the Hero animation
+                  tag: 'searchBarHero',
                   child: AbsorbPointer(
                     child: TextField(
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.symmetric(
-                          vertical:
-                              10.0, // Adjusts the height of the search bar
+                          vertical: 10.0,
                           horizontal: 10.0,
                         ),
                         prefixIcon: Icon(Icons.search, color: Colors.black),
@@ -87,13 +144,13 @@ class MainScreens extends StatelessWidget {
                         hintStyle:
                             TextStyle(color: Colors.black54, fontSize: 16.0),
                         filled: true,
-                        fillColor: Colors.white, // Background color
+                        fillColor: Colors.white,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(10.0),
                           ),
                           borderSide: BorderSide(
-                            color: Colors.black, // Border color
+                            color: Colors.black,
                             width: 2.0,
                           ),
                         ),
@@ -102,7 +159,7 @@ class MainScreens extends StatelessWidget {
                             Radius.circular(10.0),
                           ),
                           borderSide: BorderSide(
-                            color: Colors.black, // Border color when enabled
+                            color: Colors.black,
                             width: 2.0,
                           ),
                         ),
@@ -111,7 +168,7 @@ class MainScreens extends StatelessWidget {
                             Radius.circular(10.0),
                           ),
                           borderSide: BorderSide(
-                            color: Colors.black, // Border color when focused
+                            color: Colors.black,
                             width: 2.0,
                           ),
                         ),

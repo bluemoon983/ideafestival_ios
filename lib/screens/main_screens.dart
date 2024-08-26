@@ -45,27 +45,35 @@ class MainScreens extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
+            DrawerHeader(
+              decoration: const BoxDecoration(
                 color: Colors.black,
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '메뉴',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
+              child: ClipRect(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      '메뉴',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 20),
-                  Icon(
-                    Icons.shopping_cart,
-                    color: Colors.white,
-                    size: 20, // Adjust the size of the icon as needed
-                  ),
-                ],
+                    Transform.scale(
+                      scale: 1.5, // Adjust the scale factor as needed
+                      child: Transform.translate(
+                        offset: const Offset(
+                            -10, 10), // Adjust the offset if needed
+                        child: const Icon(
+                          Icons.shopping_cart,
+                          color: Colors.white,
+                          size: 130, // Adjust the size of the icon as needed
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             ListTile(

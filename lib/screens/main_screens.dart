@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iosgsmarket/screens/mypage_screens.dart';
+import 'package:iosgsmarket/screens/option_screens.dart';
 import 'package:iosgsmarket/screens/search_screens.dart';
 
 class MainScreens extends StatelessWidget {
@@ -104,7 +105,14 @@ class MainScreens extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.settings),
               title: const Text('설정'),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const OptionScreens(),
+                  ),
+                );
+              },
             ),
             ListTile(
               leading: const Icon(Icons.login_outlined),

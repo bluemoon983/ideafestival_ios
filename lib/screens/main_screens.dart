@@ -77,10 +77,13 @@ class MainScreens extends StatelessWidget {
               icon: Icon(Icons.home),
             ),
             Tab(
-              icon: Icon(Icons.search),
+              icon: Icon(Icons.shopping_bag),
             ),
             Tab(
-              icon: Icon(Icons.settings),
+              icon: Icon(Icons.edit),
+            ),
+            Tab(
+              icon: Icon(Icons.chat),
             ),
           ],
           labelColor: Colors.black,
@@ -172,10 +175,7 @@ class MainScreens extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 20,
-                    ),
-                    SizedBox(
-                      height: 20,
+                      height: 15,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,

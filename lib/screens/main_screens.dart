@@ -11,12 +11,18 @@ class MainScreens extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const Text(
-          "GSMarket",
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 40,
-            fontWeight: FontWeight.w600,
+        title: const Hero(
+          tag: "titlename",
+          child: Material(
+            color: Colors.transparent,
+            child: Text(
+              "GSMarket",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 40,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ),
         ),
         actions: [

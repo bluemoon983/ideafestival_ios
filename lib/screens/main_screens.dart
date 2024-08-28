@@ -1,7 +1,9 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:iosgsmarket/screens/mypage_screens.dart';
 import 'package:iosgsmarket/screens/option_screens.dart';
 import 'package:iosgsmarket/screens/search_screens.dart';
+import 'package:iosgsmarket/widgets/chat_widget.dart';
 import 'package:iosgsmarket/widgets/shopping_widget.dart';
 import 'package:iosgsmarket/widgets/writing_widget.dart';
 
@@ -32,7 +34,7 @@ class MainScreens extends StatelessWidget {
             _HomeTab(),
             ShoppingWidget(),
             WritingWidget(),
-            WritingWidget(), // Adjusted this as needed
+            ChatWidget(), // Adjusted this as needed
           ],
         ),
       ),

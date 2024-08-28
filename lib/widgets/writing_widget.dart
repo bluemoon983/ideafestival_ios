@@ -7,6 +7,7 @@ class WritingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Colors.white,
+      body: Text("writing"),
     );
   }
 }

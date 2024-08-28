@@ -7,7 +7,7 @@ class ChatWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Colors.white,
-      body: Text("chat"),
+      body: Text("채팅"),
     );
   }
 }

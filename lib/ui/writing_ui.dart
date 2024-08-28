@@ -8,7 +8,8 @@ class WritingWidget extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.only(left: 20.0, top: 20.0),
+        padding: const EdgeInsets.only(
+            left: 20.0, top: 20.0, right: 20.0), // Adjusted padding
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -47,13 +48,13 @@ class WritingWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              width: 390, // 원하는 너비로 설정
-              height: 100, // 원하는 높이로 설정
+              width: 390,
+              height: 100,
               child: TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                 ),
-                maxLines: null, // 여러 줄 입력 가능
+                maxLines: null,
               ),
             ),
             const Text(
@@ -64,13 +65,13 @@ class WritingWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              width: 390, // 원하는 너비로 설정
-              height: 100, // 원하는 높이로 설정
+              width: 390,
+              height: 100,
               child: TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                 ),
-                maxLines: null, // 여러 줄 입력 가능
+                maxLines: null,
               ),
             ),
             const Text(
@@ -81,61 +82,64 @@ class WritingWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              width: 390, // 원하는 너비로 설정
+              width: 390,
               child: TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                 ),
-                minLines: 3, // 최소 3줄 높이
-                maxLines: 10, // 최대 10줄 높이
+                minLines: 3,
+                maxLines: 10,
               ),
             ),
             const SizedBox(
               height: 70,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center, // 버튼을 Row의 중앙에 배치
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 50.0,
-                        vertical: 20.0,
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: 10.0), // Add padding around the Row
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 50.0,
+                          vertical: 20.0,
+                        ),
+                        textStyle: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black,
+                        ),
                       ),
-                      textStyle: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black,
-                      ),
-                    ),
-                    child: const Text(
-                      "게시",
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 50.0,
-                        vertical: 20.0,
-                      ),
-                      textStyle: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black,
-                      ),
-                    ),
-                    child: const Text(
-                      "게시",
+                      child: const Text("게시"),
                     ),
                   ),
-                ),
-              ],
-            )
+                  const SizedBox(width: 20),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            Colors.black, // Fill the button with black color
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 50.0,
+                          vertical: 20.0,
+                        ),
+                        textStyle: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white, // Set the text color to white
+                        ),
+                      ),
+                      child: const Text("임시 저장"),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:iosgsmarket/screens/mypage_screens.dart';
 import 'package:iosgsmarket/screens/option_screens.dart';
 import 'package:iosgsmarket/screens/search_screens.dart';
-import 'package:iosgsmarket/screens/chat_screens.dart';
-import 'package:iosgsmarket/screens/shopping_screens.dart';
-import 'package:iosgsmarket/screens/writing_screens.dart';
+import 'package:iosgsmarket/ui/chat_ui.dart';
+import 'package:iosgsmarket/ui/shopping_ui.dart';
+import 'package:iosgsmarket/ui/writing_ui.dart';
 
 class MainScreens extends StatelessWidget {
   const MainScreens({super.key});

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CurrencyCard extends StatelessWidget {
+class GoodsWidget extends StatelessWidget {
   final String name, code, amount;
   final IconData icon;
   final bool inIverted;
 
   final blackColor = const Color(0xFF1F2123);
 
-  const CurrencyCard({
+  const GoodsWidget({
     super.key,
     required this.name,
     required this.code,

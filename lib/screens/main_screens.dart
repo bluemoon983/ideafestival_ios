@@ -1,11 +1,10 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:iosgsmarket/screens/mypage_screens.dart';
 import 'package:iosgsmarket/screens/option_screens.dart';
 import 'package:iosgsmarket/screens/search_screens.dart';
-import 'package:iosgsmarket/widgets/chat_widget.dart';
-import 'package:iosgsmarket/widgets/shopping_widget.dart';
-import 'package:iosgsmarket/widgets/writing_widget.dart';
+import 'package:iosgsmarket/screens/chat_screens.dart';
+import 'package:iosgsmarket/screens/shopping_screens.dart';
+import 'package:iosgsmarket/screens/writing_screens.dart';
 
 class MainScreens extends StatelessWidget {
   const MainScreens({super.key});

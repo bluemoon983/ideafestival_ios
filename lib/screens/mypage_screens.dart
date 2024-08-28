@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iosgsmarket/widgets/outline_button.dart';
+import 'package:iosgsmarket/widgets/outline_button_widget.dart';
 
 class MypageScreens extends StatelessWidget {
   const MypageScreens({super.key});

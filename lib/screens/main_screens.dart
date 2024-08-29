@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iosgsmarket/screens/alarm_screens.dart';
 import 'package:iosgsmarket/screens/mypage_screens.dart';
 import 'package:iosgsmarket/screens/option_screens.dart';
 import 'package:iosgsmarket/screens/search_screens.dart';
@@ -106,7 +107,7 @@ class MainScreens extends StatelessWidget {
           _buildDrawerItem(
             icon: Icons.notifications_active,
             text: "알림",
-            onTap: () {},
+            onTap: () => _navigateTo(context, const AlarmScreens()),
           ),
           _buildDrawerItem(
             icon: Icons.login_outlined,

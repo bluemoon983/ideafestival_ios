@@ -31,7 +31,7 @@ class ChatUi extends StatelessWidget {
                 children: [
                   ChatWidget(
                     name: "김담율",
-                    lastMessage: "오늘 라면 ㄱㄱ",
+                    lastMessage: "오늘 라면 먹자",
                     icon: Icons.account_circle_sharp,
                     onTap: () {
                       // 채팅 화면으로 이동하는 로직 추가

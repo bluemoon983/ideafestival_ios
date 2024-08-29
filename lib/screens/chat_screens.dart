@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ChatScreens extends StatefulWidget {
   final String name;
@@ -10,15 +11,23 @@ class ChatScreens extends StatefulWidget {
 }
 
 class _ChatScreensState extends State<ChatScreens> {
-  final List<String> _messages = [];
+  final List<Map<String, String>> _messages = [];
   final TextEditingController _controller = TextEditingController();
   final ScrollController _scrollController = ScrollController();
 
   void _sendMessage() {
     if (_controller.text.isEmpty) return;
 
+    // Get the current time
+    final now = DateTime.now();
+    final formattedTime =
+        DateFormat('HH:mm').format(now); // Format the time to HH:mm
+
     setState(() {
-      _messages.add(_controller.text);
+      _messages.add({
+        'text': _controller.text,
+        'time': formattedTime,
+      });
       _controller.clear();
     });
 
@@ -40,10 +49,10 @@ class _ChatScreensState extends State<ChatScreens> {
         children: [
           Expanded(
             child: ListView.builder(
-              // ListView.separated 대신 ListView.builder 사용
               controller: _scrollController,
               itemCount: _messages.length,
               itemBuilder: (context, index) {
+                final message = _messages[index];
                 return Align(
                   alignment: Alignment.centerRight,
                   child: Container(
@@ -54,9 +63,20 @@ class _ChatScreensState extends State<ChatScreens> {
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Text(
-                      _messages[index],
-                      style: const TextStyle(color: Colors.white),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          message['text']!,
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        const SizedBox(height: 5),
+                        Text(
+                          message['time']!,
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 10),
+                        ),
+                      ],
                     ),
                   ),
                 );

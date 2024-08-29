@@ -29,7 +29,10 @@ class ChatWidget extends StatelessWidget {
         leading: CircleAvatar(
           child: Icon(icon, size: 24.0),
         ),
-        title: Text(name),
+        title: Text(
+          name,
+          style: const TextStyle(fontWeight: FontWeight.w600),
+        ),
         subtitle: Text(lastMessage),
         onTap: onTap,
       ),

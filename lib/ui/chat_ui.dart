@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iosgsmarket/screens/chat_screens.dart';
 import 'package:iosgsmarket/widgets/chat_widget.dart';
 
 class ChatUi extends StatelessWidget {
@@ -33,41 +34,39 @@ class ChatUi extends StatelessWidget {
                     name: "김담율",
                     lastMessage: "오늘 라면 먹자",
                     icon: Icons.account_circle_sharp,
-                    onTap: () {
-                      // 채팅 화면으로 이동하는 로직 추가
-                    },
+                    onTap: () => _navigateTo(context,
+                        const ChatScreens(name: "김담율")), // Implement navigation
                   ),
                   ChatWidget(
                     name: "박찬울",
                     lastMessage: "나 방",
                     icon: Icons.account_circle_sharp,
-                    onTap: () {
-                      // 채팅 화면으로 이동하는 로직 추가
-                    },
+                    onTap: () =>
+                        _navigateTo(context, const ChatScreens(name: "박찬울")),
                   ),
                   ChatWidget(
                     name: "이서준",
                     lastMessage: "스나이퍼가 필요해서 니가 좀 도와줘야 겠다",
                     icon: Icons.account_circle_sharp,
-                    onTap: () {
-                      // 채팅 화면으로 이동하는 로직 추가
-                    },
+                    onTap: () => _navigateTo(context,
+                        const ChatScreens(name: "이서준")), // Implement navigation
                   ),
                   ChatWidget(
                     name: "함도욱",
                     lastMessage: "302호 ㄱㄱ",
                     icon: Icons.account_circle_sharp,
-                    onTap: () {
-                      // 채팅 화면으로 이동하는 로직 추가
-                    },
+                    onTap: () => _navigateTo(context,
+                        const ChatScreens(name: "함도욱")), // Implement navigation
                   ),
                   ChatWidget(
                     name: "이세민",
                     lastMessage: "팩트는 이세민이 건강해지고 있다는 거임",
                     icon: Icons.account_circle_sharp,
-                    onTap: () {
-                      // 채팅 화면으로 이동하는 로직 추가
-                    },
+                    onTap: () => _navigateTo(
+                        context,
+                        const ChatScreens(
+                          name: "이세민",
+                        )), // Implement navigation
                   ),
                 ],
               ),
@@ -77,4 +76,11 @@ class ChatUi extends StatelessWidget {
       ),
     );
   }
+}
+
+void _navigateTo(BuildContext context, Widget destination) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => destination),
+  );
 }

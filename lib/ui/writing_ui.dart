@@ -53,6 +53,7 @@ class WritingWidget extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
+                  hintText: '제목을 입력하세요.', // Hint text added here
                 ),
                 maxLines: null,
               ),
@@ -70,6 +71,7 @@ class WritingWidget extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
+                  hintText: '가격을 입력하세요.', // Hint text added here
                 ),
                 maxLines: null,
               ),
@@ -86,6 +88,7 @@ class WritingWidget extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
+                  hintText: '상품에 대한 자세한 설명을 입력하세요.', // Hint text added here
                 ),
                 minLines: 3,
                 maxLines: 10,

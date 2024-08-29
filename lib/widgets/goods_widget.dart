@@ -35,7 +35,7 @@ class GoodsWidget extends StatelessWidget {
                   name,
                   style: TextStyle(
                     color: inIverted ? blackColor : Colors.white,
-                    fontSize: 32,
+                    fontSize: 30,
                     fontWeight: FontWeight.w600,
                   ),
                 ),

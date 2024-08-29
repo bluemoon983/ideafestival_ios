@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:iosgsmarket/widgets/chat_widget.dart';
 
-class ChatWidget extends StatelessWidget {
-  const ChatWidget({super.key});
+class ChatUi extends StatelessWidget {
+  const ChatUi({super.key});
 
   static const TextStyle titleStyle = TextStyle(
     fontSize: 30,
@@ -10,22 +11,67 @@ class ChatWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Align(
+            const Align(
               alignment: Alignment.topLeft,
               child: Text(
                 "채팅",
                 style: titleStyle,
               ),
             ),
-            SizedBox(height: 20), // 텍스트와 다음 요소 사이에 간격 추가
-            // 여기에 추가적인 위젯을 배치할 수 있습니다.
+            const SizedBox(height: 20),
+            Expanded(
+              child: ListView(
+                children: [
+                  ChatWidget(
+                    name: "김담율",
+                    lastMessage: "오늘 라면 ㄱㄱ",
+                    icon: Icons.account_circle_sharp,
+                    onTap: () {
+                      // 채팅 화면으로 이동하는 로직 추가
+                    },
+                  ),
+                  ChatWidget(
+                    name: "박찬울",
+                    lastMessage: "나 방",
+                    icon: Icons.account_circle_sharp,
+                    onTap: () {
+                      // 채팅 화면으로 이동하는 로직 추가
+                    },
+                  ),
+                  ChatWidget(
+                    name: "이서준",
+                    lastMessage: "스나이퍼가 필요해서 니가 좀 도와줘야 겠다",
+                    icon: Icons.account_circle_sharp,
+                    onTap: () {
+                      // 채팅 화면으로 이동하는 로직 추가
+                    },
+                  ),
+                  ChatWidget(
+                    name: "함도욱",
+                    lastMessage: "302호 ㄱㄱ",
+                    icon: Icons.account_circle_sharp,
+                    onTap: () {
+                      // 채팅 화면으로 이동하는 로직 추가
+                    },
+                  ),
+                  ChatWidget(
+                    name: "이세민",
+                    lastMessage: "팩트는 이세민이 건강해지고 있다는 거임",
+                    icon: Icons.account_circle_sharp,
+                    onTap: () {
+                      // 채팅 화면으로 이동하는 로직 추가
+                    },
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

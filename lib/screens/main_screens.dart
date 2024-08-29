@@ -33,7 +33,7 @@ class MainScreens extends StatelessWidget {
             _HomeTab(),
             ShoppingWidget(),
             WritingWidget(),
-            ChatWidget(), // Adjusted this as needed
+            ChatUi(), // Adjusted this as needed
           ],
         ),
       ),

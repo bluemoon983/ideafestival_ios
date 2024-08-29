@@ -91,7 +91,7 @@ class MainScreens extends StatelessWidget {
           _buildDrawerItem(
             icon: Icons.home,
             text: '홈',
-            onTap: () => _navigateTo(context, const MainScreens()),
+            onTap: () => Navigator.pop(context),
           ),
           _buildDrawerItem(
             icon: Icons.search,

@@ -107,7 +107,7 @@ class MainScreens extends StatelessWidget {
           _buildDrawerItem(
             icon: Icons.notifications_active,
             text: "알림",
-            onTap: () => _navigateTo(context, const AlarmScreens()),
+            onTap: () => _navigateTo(context, AlarmScreens()),
           ),
           _buildDrawerItem(
             icon: Icons.login_outlined,

@@ -11,10 +11,10 @@ class AlarmScreens extends StatelessWidget {
         title: const Material(
           color: Colors.transparent,
           child: Text(
-            "GSMarket",
+            "알림",
             style: TextStyle(
               color: Colors.black,
-              fontSize: 40,
+              fontSize: 25,
               fontWeight: FontWeight.w600,
             ),
           ),

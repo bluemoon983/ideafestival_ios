@@ -94,7 +94,7 @@ class _BottomInputField extends StatelessWidget {
             child: TextField(
               controller: controller,
               decoration: const InputDecoration.collapsed(
-                hintText: 'Type a message...',
+                hintText: '메시지 작성....',
               ),
               textCapitalization: TextCapitalization.sentences,
               onSubmitted: (_) => onSend(),

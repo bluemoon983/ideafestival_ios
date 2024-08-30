@@ -98,7 +98,6 @@ class _BottomInputField extends StatelessWidget {
   final VoidCallback onSend;
 
   const _BottomInputField({
-    super.key,
     required this.controller,
     required this.onSend,
   });

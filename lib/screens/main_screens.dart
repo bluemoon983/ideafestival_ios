@@ -12,7 +12,7 @@ class MainScreens extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4, // Updated to match the number of tabs
+      length: 4,
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: _buildAppBar(context),
@@ -33,7 +33,7 @@ class MainScreens extends StatelessWidget {
             _HomeTab(),
             ShoppingWidget(),
             WritingWidget(),
-            ChatUi(), // Adjusted this as needed
+            ChatUi(),
           ],
         ),
       ),
@@ -160,14 +160,14 @@ class _HomeTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 15),
-            Row(
+            const SizedBox(height: 15),
+            const Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Column(
@@ -194,14 +194,15 @@ class _HomeTab extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 60),
-            Text(
+            const SizedBox(height: 60),
+            const Text(
               "Null",
               style: TextStyle(
                 fontSize: 23,
                 fontWeight: FontWeight.w900,
               ),
             ),
+            Image.asset('assets/images/blue.jpg'),
           ],
         ),
       ),

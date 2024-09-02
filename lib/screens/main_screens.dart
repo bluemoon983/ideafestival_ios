@@ -196,13 +196,13 @@ class _HomeTab extends StatelessWidget {
             ),
             const SizedBox(height: 60),
             const Text(
-              "Null",
+              "hood",
               style: TextStyle(
                 fontSize: 23,
                 fontWeight: FontWeight.w900,
               ),
             ),
-            Image.asset('assets/images/blue.jpg'),
+            Image.asset('assets/images/hoood.jpg'),
           ],
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:iosgsmarket/screens/alarm_screens.dart';
 import 'package:iosgsmarket/screens/mypage_screens.dart';
@@ -167,28 +168,40 @@ class _HomeTab extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 15),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
-                      'Hello Damyul!',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 40,
-                        fontWeight: FontWeight.w800,
-                      ),
+                    AnimatedTextKit(
+                      animatedTexts: [
+                        FadeAnimatedText(
+                          'Hello Damyul!',
+                          textStyle: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 40,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                      ],
+                      isRepeatingAnimation: false,
                     ),
-                    SizedBox(height: 10),
-                    Text(
-                      "GSMarket에 온걸 환영해요",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    Text(
-                      "중고거래를 시작해 볼까요?",
-                      style: TextStyle(fontSize: 23),
+                    const SizedBox(height: 10),
+                    AnimatedTextKit(
+                      animatedTexts: [
+                        TyperAnimatedText(
+                          "GSMarket에 온걸 환영해요",
+                          textStyle: const TextStyle(fontSize: 20),
+                        ),
+                        TyperAnimatedText(
+                          "중고거래를 시작해 볼까요?",
+                          textStyle: const TextStyle(fontSize: 23),
+                        ),
+                      ],
+                      isRepeatingAnimation: false,
+                      displayFullTextOnTap: true,
+                      stopPauseOnTap: true,
                     ),
                   ],
                 ),

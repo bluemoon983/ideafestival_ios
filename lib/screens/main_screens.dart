@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:iosgsmarket/screens/alarm_screens.dart';
 import 'package:iosgsmarket/screens/mypage_screens.dart';
@@ -156,8 +155,73 @@ class MainScreens extends StatelessWidget {
   }
 }
 
-class _HomeTab extends StatelessWidget {
+class _HomeTab extends StatefulWidget {
   const _HomeTab();
+
+  @override
+  State<_HomeTab> createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State<_HomeTab> with TickerProviderStateMixin {
+  late AnimationController _fadeController;
+  late AnimationController _typingController;
+  late Animation<double> _fadeAnimation;
+  late List<String> _texts;
+  int _textIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Texts to be animated
+    _texts = ["GSMarket에 온걸 환영해요", "중고거래를 시작해 볼까요?"];
+
+    // Fade-in animation controller and animation
+    _fadeController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    );
+    _fadeAnimation = CurvedAnimation(
+      parent: _fadeController,
+      curve: Curves.easeIn,
+    );
+    _fadeController.forward();
+
+    // Typing animation controller
+    _typingController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    );
+
+    // Start the typing animation and loop the text
+    _typingController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        Future.delayed(const Duration(seconds: 1), () {
+          setState(() {
+            _textIndex = (_textIndex + 1) % _texts.length;
+            _typingController.reset();
+            _typingController.forward();
+          });
+        });
+      }
+    });
+
+    _typingController.forward();
+  }
+
+  @override
+  void dispose() {
+    _fadeController.dispose();
+    _typingController.dispose();
+    super.dispose();
+  }
+
+  String get _currentText {
+    final text = _texts[_textIndex];
+    final typedLength =
+        (_typingController.value * text.length).floor().clamp(0, text.length);
+    return text.substring(0, typedLength);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -174,34 +238,26 @@ class _HomeTab extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    AnimatedTextKit(
-                      animatedTexts: [
-                        FadeAnimatedText(
-                          'Hello Damyul!',
-                          textStyle: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 40,
-                            fontWeight: FontWeight.w800,
-                          ),
+                    FadeTransition(
+                      opacity: _fadeAnimation,
+                      child: const Text(
+                        'Hello Damyul!',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 40,
+                          fontWeight: FontWeight.w800,
                         ),
-                      ],
-                      isRepeatingAnimation: false,
+                      ),
                     ),
                     const SizedBox(height: 10),
-                    AnimatedTextKit(
-                      animatedTexts: [
-                        TyperAnimatedText(
-                          "GSMarket에 온걸 환영해요",
-                          textStyle: const TextStyle(fontSize: 20),
-                        ),
-                        TyperAnimatedText(
-                          "중고거래를 시작해 볼까요?",
-                          textStyle: const TextStyle(fontSize: 23),
-                        ),
-                      ],
-                      isRepeatingAnimation: false,
-                      displayFullTextOnTap: true,
-                      stopPauseOnTap: true,
+                    AnimatedBuilder(
+                      animation: _typingController,
+                      builder: (context, child) {
+                        return Text(
+                          _currentText,
+                          style: const TextStyle(fontSize: 23),
+                        );
+                      },
                     ),
                   ],
                 ),

@@ -174,7 +174,7 @@ class _HomeTabState extends State<_HomeTab> with TickerProviderStateMixin {
     super.initState();
 
     // Texts to be animated
-    _texts = ["GSMarket에 온걸 환영해요", "중고거래를 시작해 볼까요?"];
+    _texts = ["GSMarket에 온걸 환영합니다.", "중고거래를 시작해 볼까요?"];
 
     // Fade-in animation controller and animation
     _fadeController = AnimationController(

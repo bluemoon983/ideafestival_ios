@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iosgsmarket/screens/alarm_screens.dart';
+import 'package:iosgsmarket/screens/login_screens.dart';
 import 'package:iosgsmarket/screens/mypage_screens.dart';
 import 'package:iosgsmarket/screens/search_screens.dart';
 import 'package:iosgsmarket/ui/chat_ui.dart';
@@ -106,7 +107,7 @@ class MainScreens extends StatelessWidget {
           _buildDrawerItem(
             icon: Icons.login_outlined,
             text: '로그아웃',
-            onTap: () {},
+            onTap: () => _navigateTo(context, const LoginScreens()),
           ),
         ],
       ),

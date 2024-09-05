@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 
 class ChatScreens extends StatefulWidget {
   final String name;
-
   const ChatScreens({super.key, required this.name});
 
   @override

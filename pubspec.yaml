@@ -14,7 +14,6 @@ dependencies:
   animated_text_kit: ^4.2.2
   intl: ^0.17.0
   cupertino_icons: ^1.0.8
-  flutter_chat_ui: ^1.6.15
 
 
 dev_dependencies:

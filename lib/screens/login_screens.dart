@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iosgsmarket/screens/main_screens.dart';
 
 class LoginScreens extends StatelessWidget {
   const LoginScreens({super.key});
@@ -25,9 +24,7 @@ class LoginScreens extends StatelessWidget {
   }
 
   void _navigateToMain(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const MainScreens()),
-    );
+    Navigator.popUntil(
+        context, (route) => route.isFirst); // 첫 번째 화면인 MainScreens로 돌아감
   }
 }

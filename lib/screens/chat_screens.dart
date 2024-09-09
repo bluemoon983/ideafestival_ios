@@ -15,20 +15,20 @@ class _ChatScreensState extends State<ChatScreens> {
   final ScrollController _scrollController = ScrollController();
 
   void _sendMessage() {
-    if (_controller.text.isEmpty) return;
+    if (_controller.text.isEmpty || _controller.text.trim().length == 0) return;
 
-    // Get the current time
     final now = DateTime.now();
-    final formattedTime =
-        DateFormat('HH:mm').format(now); // Format the time to HH:mm
+    final formattedTime = DateFormat('HH:mm').format(now);
 
-    setState(() {
-      _messages.add({
-        'text': _controller.text,
-        'time': formattedTime,
-      });
-      _controller.clear();
-    });
+    setState(
+      () {
+        _messages.add({
+          'text': _controller.text,
+          'time': formattedTime,
+        });
+        _controller.clear();
+      },
+    );
 
     _scrollController.animateTo(
       _scrollController.position.maxScrollExtent + 50,
@@ -41,7 +41,7 @@ class _ChatScreensState extends State<ChatScreens> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.name), // Use the name parameter here
+        title: Text(widget.name),
         backgroundColor: Colors.white,
       ),
       body: Column(

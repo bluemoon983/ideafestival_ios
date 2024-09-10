@@ -63,10 +63,11 @@ class ChatUi extends StatelessWidget {
                     lastMessage: "팩트는 이세민이 건강해지고 있다는 거임",
                     icon: Icons.account_circle_sharp,
                     onTap: () => _navigateTo(
-                        context,
-                        const ChatScreens(
-                          name: "이세민",
-                        )), // Implement navigation
+                      context,
+                      const ChatScreens(
+                        name: "이세민",
+                      ),
+                    ), // Implement navigation
                   ),
                 ],
               ),

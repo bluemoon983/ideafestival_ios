@@ -151,13 +151,27 @@ class LoginScreens extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text("아이디/비밀번호를 잊으셨나요?"),
-                  Text("계정이 없으신가요?"),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                        "아이디/비밀번호를 잊으셨나요?"),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                        "계정이 없으신가요?"),
+                  ),
                 ],
-              ),
+              )
             ],
           ),
         ),

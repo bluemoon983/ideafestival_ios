@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iosgsmarket/screens/signup_screens.dart';
 
 class LoginScreens extends StatelessWidget {
   const LoginScreens({super.key});
@@ -163,12 +164,19 @@ class LoginScreens extends StatelessWidget {
                         "아이디/비밀번호를 잊으셨나요?"),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignupScreen()),
+                      );
+                    },
                     child: const Text(
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                        "계정이 없으신가요?"),
+                      "계정이 없으신가요?",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                 ],
               )
@@ -180,7 +188,6 @@ class LoginScreens extends StatelessWidget {
   }
 
   void _navigateToMain(BuildContext context) {
-    Navigator.popUntil(
-        context, (route) => route.isFirst); // Navigate to the first route
+    Navigator.popUntil(context, (route) => route.isFirst);
   }
 }

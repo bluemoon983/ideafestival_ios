@@ -10,11 +10,14 @@ class ForgetidScreens extends StatefulWidget {
 class _ForgetidScreensState extends State<ForgetidScreens> {
   // List to keep track of selected state of the ToggleButtons
   List<bool> isSelected = [true, false];
+  String buttonText = "Sign in"; // Variable to hold the button text
 
   void toggleSelect(int index) {
     setState(() {
       isSelected = [false, false]; // Deselect all
       isSelected[index] = true; // Select the tapped button
+      buttonText =
+          index == 0 ? "Recover ID" : "Reset Password"; // Update button text
     });
   }
 
@@ -129,9 +132,9 @@ class _ForgetidScreensState extends State<ForgetidScreens> {
                     ),
                   ),
                   onPressed: () => _navigateToMain(context),
-                  child: const Text(
-                    "Sign in",
-                    style: TextStyle(
+                  child: Text(
+                    buttonText,
+                    style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
                       color: Colors.white,

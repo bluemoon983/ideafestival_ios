@@ -26,7 +26,7 @@ class LoginScreens extends StatelessWidget {
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Email address",
+                  "이메일 주소",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
@@ -61,7 +61,7 @@ class LoginScreens extends StatelessWidget {
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Username/ID",
+                  "유저 아이디",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
@@ -74,7 +74,7 @@ class LoginScreens extends StatelessWidget {
                     vertical: 10.0,
                     horizontal: 10.0,
                   ),
-                  hintText: "Enter your username or ID",
+                  hintText: "ID",
                   hintStyle: TextStyle(color: Colors.black54, fontSize: 16.0),
                   filled: true,
                   fillColor: Colors.white,
@@ -96,7 +96,7 @@ class LoginScreens extends StatelessWidget {
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Password",
+                  "비밀번호",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
@@ -110,7 +110,7 @@ class LoginScreens extends StatelessWidget {
                     vertical: 10.0,
                     horizontal: 10.0,
                   ),
-                  hintText: "Enter your password",
+                  hintText: "Password",
                   hintStyle: TextStyle(color: Colors.black54, fontSize: 16.0),
                   filled: true,
                   fillColor: Colors.white,
@@ -143,7 +143,7 @@ class LoginScreens extends StatelessWidget {
                   ),
                   onPressed: () => _navigateToMain(context),
                   child: const Text(
-                    "Sign in",
+                    "로그인",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,

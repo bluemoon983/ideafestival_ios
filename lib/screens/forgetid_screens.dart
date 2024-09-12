@@ -10,13 +10,13 @@ class ForgetidScreens extends StatefulWidget {
 class _ForgetidScreensState extends State<ForgetidScreens> {
   // List to keep track of selected state of the ToggleButtons
   List<bool> isSelected = [true, false];
-  String buttonText = "아이디 복구"; // Variable to hold the button text
+  String buttonText = "아이디 찾기"; // Variable to hold the button text
 
   void toggleSelect(int index) {
     setState(() {
       isSelected = [false, false]; // Deselect all
       isSelected[index] = true; // Select the tapped button
-      buttonText = index == 0 ? "아이디 복구" : "비밀번호 재설정"; // Update button text
+      buttonText = index == 0 ? "아이디 찾기" : "비밀번호 재설정"; // Update button text
     });
   }
 
@@ -44,7 +44,7 @@ class _ForgetidScreensState extends State<ForgetidScreens> {
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "아이디를 복구하거나 비밀번호를 재설정하세요.",
+                  "아이디를 찾거나 비밀번호를 재설정하세요.",
                   style: TextStyle(
                     fontSize: 15,
                     color: Color.fromARGB(255, 79, 79, 79),

@@ -39,12 +39,3 @@ class SignupScreen extends StatelessWidget {
     Navigator.popUntil(context, (route) => route.isFirst);
   }
 }
-
-void main() {
-  runApp(
-    MaterialApp(
-      theme: ThemeData.light(), // 기본 테마를 밝은 테마로 설정
-      home: const SignupScreen(),
-    ),
-  );
-}

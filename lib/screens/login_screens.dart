@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iosgsmarket/screens/forgetid_screens.dart';
 import 'package:iosgsmarket/screens/signup_screens.dart';
 
 class LoginScreens extends StatelessWidget {
@@ -156,12 +157,18 @@ class LoginScreens extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ForgetidScreens()));
+                    },
                     child: const Text(
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                        "아이디/비밀번호를 잊으셨나요?"),
+                      "아이디/비밀번호를 잊으셨나요?",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                   TextButton(
                     onPressed: () {

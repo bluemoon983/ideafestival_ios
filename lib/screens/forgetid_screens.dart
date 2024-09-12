@@ -10,14 +10,13 @@ class ForgetidScreens extends StatefulWidget {
 class _ForgetidScreensState extends State<ForgetidScreens> {
   // List to keep track of selected state of the ToggleButtons
   List<bool> isSelected = [true, false];
-  String buttonText = "Sign in"; // Variable to hold the button text
+  String buttonText = "아이디 복구"; // Variable to hold the button text
 
   void toggleSelect(int index) {
     setState(() {
       isSelected = [false, false]; // Deselect all
       isSelected[index] = true; // Select the tapped button
-      buttonText =
-          index == 0 ? "Recover ID" : "Reset Password"; // Update button text
+      buttonText = index == 0 ? "아이디 복구" : "비밀번호 재설정"; // Update button text
     });
   }
 
@@ -35,9 +34,9 @@ class _ForgetidScreensState extends State<ForgetidScreens> {
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Forgot Credentials",
+                  "비밀번호/아이디를 잊으셨나요?",
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 27,
                     fontWeight: FontWeight.w800,
                   ),
                 ),
@@ -45,10 +44,10 @@ class _ForgetidScreensState extends State<ForgetidScreens> {
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Recover your ID or reset your password",
+                  "아이디를 복구하거나 비밀번호를 재설정하세요.",
                   style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.grey,
+                    fontSize: 15,
+                    color: Color.fromARGB(255, 79, 79, 79),
                   ),
                 ),
               ),
@@ -69,14 +68,14 @@ class _ForgetidScreensState extends State<ForgetidScreens> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      '     Forgot ID     ',
+                      '     아이디     ',
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      'Forgot Password',
+                      '     비밀번호     ',
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
@@ -86,7 +85,7 @@ class _ForgetidScreensState extends State<ForgetidScreens> {
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Email",
+                  "이메일",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
@@ -100,7 +99,7 @@ class _ForgetidScreensState extends State<ForgetidScreens> {
                     vertical: 10.0,
                     horizontal: 10.0,
                   ),
-                  hintText: "Enter your email",
+                  hintText: "name@example.com",
                   hintStyle: TextStyle(color: Colors.black54, fontSize: 16.0),
                   filled: true,
                   fillColor: Colors.white,

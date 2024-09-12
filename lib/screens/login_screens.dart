@@ -26,7 +26,7 @@ class LoginScreens extends StatelessWidget {
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "이메일 주소",
+                  "이메일",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w800,

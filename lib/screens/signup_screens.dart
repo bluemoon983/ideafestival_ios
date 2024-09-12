@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iosgsmarket/screens/forgetid_screens.dart';
 
 class SignupScreens extends StatelessWidget {
   const SignupScreens({super.key});

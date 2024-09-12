@@ -103,31 +103,7 @@ class LoginScreens extends StatelessWidget {
                   ),
                 ),
               ),
-              const TextField(
-                obscureText: true, // Hide the text for password input
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(
-                    vertical: 10.0,
-                    horizontal: 10.0,
-                  ),
-                  hintText: "Password",
-                  hintStyle: TextStyle(color: Colors.black54, fontSize: 16.0),
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    borderSide: BorderSide(color: Colors.black, width: 2.0),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    borderSide: BorderSide(color: Colors.black, width: 2.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    borderSide: BorderSide(color: Colors.black, width: 2.0),
-                  ),
-                ),
-              ),
+              _PasswordTextField(),
               const SizedBox(height: 30),
               SizedBox(
                 width: 500,
@@ -138,7 +114,9 @@ class LoginScreens extends StatelessWidget {
                     side: const BorderSide(color: Colors.black),
                     backgroundColor: Colors.black,
                     shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5),
+                      ),
                     ),
                   ),
                   onPressed: () => _navigateToMain(context),
@@ -159,9 +137,11 @@ class LoginScreens extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ForgetidScreens()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ForgetidScreens(),
+                        ),
+                      );
                     },
                     child: const Text(
                       "아이디/비밀번호를 잊으셨나요?",
@@ -175,7 +155,8 @@ class LoginScreens extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const SignupScreens()),
+                          builder: (context) => const SignupScreens(),
+                        ),
                       );
                     },
                     child: const Text(
@@ -196,5 +177,56 @@ class LoginScreens extends StatelessWidget {
 
   void _navigateToMain(BuildContext context) {
     Navigator.popUntil(context, (route) => route.isFirst);
+  }
+}
+
+class _PasswordTextField extends StatefulWidget {
+  @override
+  __PasswordTextFieldState createState() => __PasswordTextFieldState();
+}
+
+class __PasswordTextFieldState extends State<_PasswordTextField> {
+  bool _obscureText = true;
+
+  void _toggleVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      obscureText: _obscureText,
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: 10.0,
+          horizontal: 10.0,
+        ),
+        hintText: "Password",
+        hintStyle: const TextStyle(color: Colors.black54, fontSize: 16.0),
+        filled: true,
+        fillColor: Colors.white,
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          borderSide: BorderSide(color: Colors.black, width: 2.0),
+        ),
+        enabledBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          borderSide: BorderSide(color: Colors.black, width: 2.0),
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          borderSide: BorderSide(color: Colors.black, width: 2.0),
+        ),
+        suffixIcon: IconButton(
+          icon: Icon(
+            _obscureText ? Icons.visibility_off : Icons.visibility,
+            color: Colors.black54,
+          ),
+          onPressed: _toggleVisibility,
+        ),
+      ),
+    );
   }
 }

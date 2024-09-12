@@ -4,18 +4,18 @@ class ForgetidScreens extends StatefulWidget {
   const ForgetidScreens({super.key});
 
   @override
-  _ForgetidScreensState createState() => _ForgetidScreensState();
+  State<ForgetidScreens> createState() => _ForgetidScreensState();
 }
 
 class _ForgetidScreensState extends State<ForgetidScreens> {
-  bool isMetric = true;
-  bool isImperial = false;
-  late List<bool> isSelected;
+  // List to keep track of selected state of the ToggleButtons
+  List<bool> isSelected = [true, false];
 
-  @override
-  void initState() {
-    super.initState();
-    isSelected = [isMetric, isImperial]; // 초기 상태 설정
+  void toggleSelect(int index) {
+    setState(() {
+      isSelected = [false, false]; // Deselect all
+      isSelected[index] = true; // Select the tapped button
+    });
   }
 
   @override
@@ -23,52 +23,154 @@ class _ForgetidScreensState extends State<ForgetidScreens> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ToggleButtons(
-              isSelected: isSelected,
-              onPressed: toggleSelect,
-              color: Colors.black, // 기본 텍스트 색상
-              selectedColor: Colors.white, // 선택된 텍스트 색상 (흰색)
-              fillColor: Colors.black, // 선택된 버튼 배경색 (검정색)
-              borderRadius: BorderRadius.circular(10),
-              borderColor: Colors.black, // 테두리 색상
-              children: const [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    'Forgot Id',
-                    style: TextStyle(fontSize: 18),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 20),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Forgot Credentials",
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w800,
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    'Forgot Password',
-                    style: TextStyle(fontSize: 18),
+              ),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Recover your ID or reset your password",
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.grey,
                   ),
                 ),
-              ],
-            ),
-          ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              ToggleButtons(
+                isSelected: isSelected,
+                onPressed: (int index) {
+                  toggleSelect(index);
+                },
+                color: Colors.black, // Default text color
+                selectedColor: Colors.white, // Selected text color
+                fillColor: Colors.black, // Selected button background color
+                borderRadius: BorderRadius.circular(10),
+                borderColor: Colors.black, // Border color
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      '     Forgot ID     ',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      'Forgot Password',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Email",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+              const TextField(
+                obscureText: true, // Hide the text for password input
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 10.0,
+                    horizontal: 10.0,
+                  ),
+                  hintText: "Enter your email",
+                  hintStyle: TextStyle(color: Colors.black54, fontSize: 16.0),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    borderSide: BorderSide(color: Colors.black, width: 2.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    borderSide: BorderSide(color: Colors.black, width: 2.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    borderSide: BorderSide(color: Colors.black, width: 2.0),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              SizedBox(
+                width: 500,
+                height: 50,
+                child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.black,
+                    side: const BorderSide(color: Colors.black),
+                    backgroundColor: Colors.black,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                    ),
+                  ),
+                  onPressed: () => _navigateToMain(context),
+                  child: const Text(
+                    "Sign in",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "로그인창으로 돌아가기",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "계정이 없으신가요?",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
   }
+}
 
-  void toggleSelect(int index) {
-    setState(
-      () {
-        if (index == 0) {
-          isMetric = true;
-          isImperial = false;
-        } else {
-          isMetric = false;
-          isImperial = true;
-        }
-        isSelected = [isMetric, isImperial]; // 상태 업데이트
-      },
-    );
-  }
+void _navigateToMain(BuildContext context) {
+  Navigator.popUntil(context, (route) => route.isFirst);
 }

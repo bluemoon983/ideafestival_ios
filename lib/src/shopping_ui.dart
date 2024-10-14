@@ -39,6 +39,7 @@ class _MainScreensState extends State<ShoppingUi> {
         update();
       },
       child: Container(
+        color: Colors.white,
         padding: const EdgeInsets.all(22),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -81,24 +82,34 @@ class _MainScreensState extends State<ShoppingUi> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("SQFlite Sample"),
+        backgroundColor: Colors.white,
+        title: const Padding(
+          padding: EdgeInsets.only(top: 23.0, bottom: 20), // 왼쪽 패딩 추가
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "중고 거래",
+              style: TextStyle(fontSize: 39),
+            ),
+          ),
+        ),
       ),
       body: FutureBuilder<List<Sample>>(
         future: _loadSampleList(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            // 오류 발생 시 오류 메시지를 화면에 출력
             return Center(
               child: Text('Error: ${snapshot.error}'),
             );
           }
           if (snapshot.hasData) {
-            var datas = snapshot.data;
+            var datas = snapshot.data; // 로드된 데이터
             return ListView(
-              children: List.generate(
-                  datas!.length, (index) => _sampleOne(datas[index])),
+              children: List.generate(datas!.length,
+                  (index) => _sampleOne(datas[index])), // 데이터 기반으로 리스트 생성
             );
           } else {
+            // 데이터가 로드되는 동안 로딩 인디케이터 표시
             return const Center(
               child: CircularProgressIndicator(),
             );
@@ -106,11 +117,11 @@ class _MainScreensState extends State<ShoppingUi> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: createdRandomSample,
+        onPressed: createdRandomSample, // 샘플 추가 버튼
         backgroundColor: Colors.white,
         child: const Icon(
           Icons.add,
-          color: Color.fromARGB(255, 243, 221, 20),
+          color: Colors.black, // 아이콘 색상
         ),
       ),
     );

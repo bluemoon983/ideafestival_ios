@@ -32,7 +32,7 @@ class MainScreens extends StatelessWidget {
         body: const TabBarView(
           children: <Widget>[
             _HomeTab(),
-            ShoppingWidget(),
+            ShoppingUi(),
             WritingWidget(),
             ChatUi(),
           ],

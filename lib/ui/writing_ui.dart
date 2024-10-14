@@ -2,121 +2,144 @@ import 'package:flutter/material.dart';
 
 class WritingWidget extends StatelessWidget {
   const WritingWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {},
+        ),
+        title: const Text(
+          "내 물건 팔기",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: Padding(
-        padding: const EdgeInsets.only(
-            left: 20.0, top: 20.0, right: 20.0), // Adjusted padding
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                "내 물건 팔기",
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+              Center(
+                child: Column(
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.camera_alt,
+                        size: 50,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    const Text(
+                      "사진 추가",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 30),
+              const Text(
+                "제목",
                 style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.camera_enhance),
-            ),
-            const Text(
-              "사진 추가",
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w300,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Text(
-              "제목",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w300,
-              ),
-            ),
-            const SizedBox(
-              width: 390,
-              height: 100,
-              child: TextField(
+              const SizedBox(height: 10),
+              const TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: '제목을 입력하세요.', // Hint text added here
+                  hintText: '제목을 입력하세요.',
                 ),
-                maxLines: null,
               ),
-            ),
-            const Text(
-              "가격",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w300,
+              const SizedBox(height: 20),
+              const Text(
+                "가격",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
-            const SizedBox(
-              width: 390,
-              height: 100,
-              child: TextField(
+              const SizedBox(height: 10),
+              const TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: '가격을 입력하세요.', // Hint text added here
+                  hintText: '가격을 입력하세요.',
                 ),
-                maxLines: null,
+                keyboardType: TextInputType.number,
               ),
-            ),
-            const Text(
-              "상세 설명",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w300,
+              const SizedBox(height: 20),
+              const Text(
+                "상세 설명",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
-            const SizedBox(
-              width: 390,
-              child: TextField(
+              const SizedBox(height: 10),
+              const TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: '상품에 대한 자세한 설명을 입력하세요.', // Hint text added here
+                  hintText: '상품에 대한 자세한 설명을 입력하세요.',
                 ),
-                minLines: 3,
+                minLines: 5,
                 maxLines: 10,
               ),
-            ),
-            const SizedBox(
-              height: 70,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 10.0), // Add padding around the Row
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              const SizedBox(height: 30),
+              Row(
                 children: [
                   Expanded(
-                    child: OutlinedButton(
+                    child: ElevatedButton(
                       onPressed: () {},
-                      style: OutlinedButton.styleFrom(
+                      style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 50.0,
-                          vertical: 20.0,
+                            vertical: 0, horizontal: 0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        textStyle: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black,
+                        elevation: 5, // Adds shadow effect
+                      ),
+                      child: Ink(
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [Colors.grey, Colors.black],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Container(
+                          constraints: const BoxConstraints(
+                            maxWidth: 390,
+                            minHeight: 60,
+                          ),
+                          alignment: Alignment.center,
+                          child: const Text(
+                            "게시",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                       ),
-                      child: const Text("게시"),
                     ),
                   ),
                   const SizedBox(width: 20),
@@ -124,25 +147,45 @@ class WritingWidget extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            Colors.black, // Fill the button with black color
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 50.0,
-                          vertical: 20.0,
+                            vertical: 0, horizontal: 0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        textStyle: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white, // Set the text color to white
+                        elevation: 5,
+                      ),
+                      child: Ink(
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [Colors.black, Colors.grey],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Container(
+                          constraints: const BoxConstraints(
+                            maxWidth: 390,
+                            minHeight: 60,
+                          ),
+                          alignment: Alignment.center,
+                          child: const Text(
+                            "임시 저장",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                       ),
-                      child: const Text("임시 저장"),
                     ),
                   ),
                 ],
               ),
-            ),
-          ],
+              const SizedBox(height: 40),
+            ],
+          ),
         ),
       ),
     );

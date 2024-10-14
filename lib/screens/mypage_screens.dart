@@ -14,7 +14,7 @@ class MypageScreens extends StatelessWidget {
         title: const Text(
           "Damyul",
           style: TextStyle(
-            fontSize: 49,
+            fontSize: 40,
             color: Colors.black,
           ),
         ),
@@ -26,7 +26,7 @@ class MypageScreens extends StatelessWidget {
           children: [
             Icon(
               Icons.account_circle,
-              size: 300,
+              size: 200,
             ),
             SizedBox(height: 20), // 아이콘과 버튼 간의 간격
             Row(

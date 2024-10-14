@@ -16,7 +16,7 @@ class CustomOutlineButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(0), // Square corners
         ),
         backgroundColor: Colors.black,
-        minimumSize: const Size(200, 200), // Set the minimum width and height
+        minimumSize: const Size(160, 160), // Set the minimum width and height
       ),
       onPressed: () {},
       child: Text(

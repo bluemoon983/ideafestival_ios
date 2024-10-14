@@ -81,10 +81,11 @@ class _MainScreensState extends State<ShoppingUi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: const Padding(
-          padding: EdgeInsets.only(top: 23.0, bottom: 20), // 왼쪽 패딩 추가
+          padding: EdgeInsets.only(top: 30.0, bottom: 20), // 왼쪽 패딩 추가
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
@@ -103,13 +104,12 @@ class _MainScreensState extends State<ShoppingUi> {
             );
           }
           if (snapshot.hasData) {
-            var datas = snapshot.data; // 로드된 데이터
+            var datas = snapshot.data;
             return ListView(
-              children: List.generate(datas!.length,
-                  (index) => _sampleOne(datas[index])), // 데이터 기반으로 리스트 생성
+              children: List.generate(
+                  datas!.length, (index) => _sampleOne(datas[index])),
             );
           } else {
-            // 데이터가 로드되는 동안 로딩 인디케이터 표시
             return const Center(
               child: CircularProgressIndicator(),
             );

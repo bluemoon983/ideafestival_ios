@@ -186,13 +186,11 @@ class _HomeTabState extends State<_HomeTab> with TickerProviderStateMixin {
     );
     _fadeController.forward();
 
-    // Typing animation controller
     _typingController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
     );
 
-    // Start the typing animation and loop the text
     _typingController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         Future.delayed(const Duration(seconds: 1), () {

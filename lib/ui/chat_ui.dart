@@ -34,8 +34,8 @@ class ChatUi extends StatelessWidget {
                     name: "김담율",
                     lastMessage: "오늘 라면 먹자",
                     icon: Icons.account_circle_sharp,
-                    onTap: () => _navigateTo(context,
-                        const ChatScreens(name: "김담율")), // Implement navigation
+                    onTap: () =>
+                        _navigateTo(context, const ChatScreens(name: "김담율")),
                   ),
                   ChatWidget(
                     name: "박찬울",
@@ -48,15 +48,15 @@ class ChatUi extends StatelessWidget {
                     name: "이서준",
                     lastMessage: "스나이퍼가 필요해서 니가 좀 도와줘야 겠다",
                     icon: Icons.account_circle_sharp,
-                    onTap: () => _navigateTo(context,
-                        const ChatScreens(name: "이서준")), // Implement navigation
+                    onTap: () =>
+                        _navigateTo(context, const ChatScreens(name: "이서준")),
                   ),
                   ChatWidget(
                     name: "함도욱",
                     lastMessage: "310호 ㄱㄱ",
                     icon: Icons.account_circle_sharp,
-                    onTap: () => _navigateTo(context,
-                        const ChatScreens(name: "함도욱")), // Implement navigation
+                    onTap: () =>
+                        _navigateTo(context, const ChatScreens(name: "함도욱")),
                   ),
                   ChatWidget(
                     name: "이세민",

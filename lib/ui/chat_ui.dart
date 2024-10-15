@@ -53,7 +53,7 @@ class ChatUi extends StatelessWidget {
                   ),
                   ChatWidget(
                     name: "함도욱",
-                    lastMessage: "302호 ㄱㄱ",
+                    lastMessage: "310호 ㄱㄱ",
                     icon: Icons.account_circle_sharp,
                     onTap: () => _navigateTo(context,
                         const ChatScreens(name: "함도욱")), // Implement navigation

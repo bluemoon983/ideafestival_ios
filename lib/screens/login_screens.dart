@@ -147,6 +147,7 @@ class LoginScreens extends StatelessWidget {
                       "아이디/비밀번호를 잊으셨나요?",
                       style: TextStyle(
                         color: Colors.black,
+                        fontSize: 12, // 글자 크기를 12로 줄임
                       ),
                     ),
                   ),
@@ -163,6 +164,7 @@ class LoginScreens extends StatelessWidget {
                       "계정이 없으신가요?",
                       style: TextStyle(
                         color: Colors.black,
+                        fontSize: 12, // 글자 크기를 12로 줄임
                       ),
                     ),
                   ),

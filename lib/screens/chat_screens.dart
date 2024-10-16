@@ -22,7 +22,7 @@ class _ChatScreensState extends State<ChatScreens> {
     final message = types.TextMessage(
       author: _user,
       createdAt: now.millisecondsSinceEpoch,
-      id: DateTime.now().millisecondsSinceEpoch.toString(), // 고유 ID 생성
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
       text: text,
     );
 
@@ -30,15 +30,14 @@ class _ChatScreensState extends State<ChatScreens> {
       _messages.insert(0, message);
     });
 
-    _controller.clear(); // 메시지 전송 후 입력 필드 비우기
+    _controller.clear();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.name,
-            style: const TextStyle(color: Colors.black)), // 타이틀 색상 설정
+        title: Text(widget.name, style: const TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
       ),
       body: Chat(

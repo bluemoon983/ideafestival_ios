@@ -27,7 +27,14 @@ class ChatWidget extends StatelessWidget {
       ),
       child: ListTile(
         leading: CircleAvatar(
-          child: Icon(icon, size: 24.0),
+          child: CircleAvatar(
+            backgroundColor: Colors.white,
+            child: Icon(
+              icon,
+              size: 30.0,
+              color: Colors.black,
+            ),
+          ),
         ),
         title: Text(
           name,

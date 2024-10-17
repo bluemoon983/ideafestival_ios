@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iosgsmarket/src/model/sample.dart';
-import 'package:iosgsmarket/src/repo/sql_sample_crud.dart';
+import 'package:iosgsmarket/src/repo/sql_shopping_crud.dart';
 import 'package:iosgsmarket/src/util/data.dart';
 
 class DetailView extends StatefulWidget {

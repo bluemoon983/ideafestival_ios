@@ -4,7 +4,7 @@ import 'package:iosgsmarket/screens/login_screens.dart';
 import 'package:iosgsmarket/screens/mypage_screens.dart';
 import 'package:iosgsmarket/screens/search_screens.dart';
 import 'package:iosgsmarket/ui/chat_ui.dart';
-import 'package:iosgsmarket/src/shopping_ui.dart';
+import 'package:iosgsmarket/ui/shopping_ui.dart';
 import 'package:iosgsmarket/ui/writing_ui.dart';
 
 class MainScreens extends StatelessWidget {

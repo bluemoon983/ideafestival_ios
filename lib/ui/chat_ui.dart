@@ -32,10 +32,13 @@ class ChatUi extends StatelessWidget {
                 children: [
                   ChatWidget(
                     name: "김담율",
-                    lastMessage: "오늘 라면 먹자",
+                    lastMessage: "오늘 ㄱ?",
                     icon: Icons.account_circle_sharp,
-                    onTap: () =>
-                        _navigateTo(context, const ChatScreens(name: "김담율")),
+                    onTap: () => _navigateTo(
+                        context,
+                        const ChatScreens(
+                          name: "김담율",
+                        )),
                   ),
                   ChatWidget(
                     name: "박찬울",

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:iosgsmarket/screens/detail_screens.dart';
+import 'package:iosgsmarket/src/detail_view.dart';
 import 'package:iosgsmarket/src/model/sample.dart';
-import 'package:iosgsmarket/src/repo/sql_shopping_crud.dart';
+import 'package:iosgsmarket/src/repo/sql_sample_crud.dart';
 import 'package:iosgsmarket/src/util/data.dart';
 
 class ShoppingUi extends StatefulWidget {

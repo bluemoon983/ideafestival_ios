@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:iosgsmarket/src/repo/sql_chatDatabaseService.dart';
 
 class ChatScreens extends StatefulWidget {
   final String name;
@@ -14,21 +15,40 @@ class _ChatScreensState extends State<ChatScreens> {
   final List<types.Message> _messages = [];
   final types.User _user = const types.User(id: 'user');
   final TextEditingController _controller = TextEditingController();
+  final SqlChatdatabaseservice _dbService = SqlChatdatabaseservice();
 
-  void _sendMessage(String text) {
+  @override
+  void initState() {
+    super.initState();
+    _loadMessagesFromDB();
+  }
+
+  // DB에서 메시지 불러오기
+  Future<void> _loadMessagesFromDB() async {
+    final messages = await _dbService.getMessages();
+    setState(() {
+      _messages.addAll(messages);
+    });
+  }
+
+  // 메시지 전송 및 DB 저장
+  void _sendMessage(String text) async {
     if (text.trim().isEmpty) return;
 
     final now = DateTime.now();
     final message = types.TextMessage(
       author: _user,
       createdAt: now.millisecondsSinceEpoch,
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      id: now.millisecondsSinceEpoch.toString(),
       text: text,
     );
 
     setState(() {
       _messages.insert(0, message);
     });
+
+    // DB에 메시지 저장
+    await _dbService.insertMessage(message);
 
     _controller.clear();
   }

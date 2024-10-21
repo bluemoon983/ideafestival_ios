@@ -5,7 +5,9 @@ import 'package:iosgsmarket/src/repo/chat_database.dart';
 
 class ChatScreens extends StatefulWidget {
   final String name;
-  const ChatScreens({super.key, required this.name});
+  final String userId; // 사용자 ID를 추가
+
+  const ChatScreens({super.key, required this.name, required this.userId});
 
   @override
   _ChatScreensState createState() => _ChatScreensState();
@@ -15,16 +17,17 @@ class _ChatScreensState extends State<ChatScreens> {
   final List<types.Message> _messages = [];
   final types.User _user = const types.User(id: 'user');
   final TextEditingController _controller = TextEditingController();
-  final ChatDatabase _chatDatabase = ChatDatabase(); // 데이터베이스 인스턴스
+  final ChatDatabase _chatDatabase = ChatDatabase();
 
   @override
   void initState() {
     super.initState();
-    _loadMessages(); // 기존 메시지 로드
+    _loadMessages(); // 메시지 로드
   }
 
   Future<void> _loadMessages() async {
-    final messages = await _chatDatabase.getMessages();
+    final messages =
+        await _chatDatabase.getMessages(widget.userId); // 해당 사용자에 대한 메시지 로드
     setState(() {
       _messages.addAll(messages.reversed); // 최신 메시지부터 보여주기 위해 역순으로 추가
     });
@@ -47,8 +50,7 @@ class _ChatScreensState extends State<ChatScreens> {
 
     _controller.clear();
 
-    // 메시지를 데이터베이스에 저장
-    await _chatDatabase.insertMessage(message);
+    await _chatDatabase.insertMessage(message, widget.userId);
   }
 
   @override

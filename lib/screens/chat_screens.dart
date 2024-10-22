@@ -47,7 +47,6 @@ class _ChatScreensState extends State<ChatScreens> {
 
     _controller.clear();
 
-    // 메시지를 데이터베이스에 저장
     await _chatDatabase.insertMessage(message);
   }
 

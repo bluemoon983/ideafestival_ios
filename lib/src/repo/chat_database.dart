@@ -57,8 +57,20 @@ class ChatDatabase {
         id: maps[i]['id'],
         text: maps[i]['text'],
         author: types.User(id: maps[i]['author_id']),
-        createdAt: maps[i]['created_at'],
+        createdAt: maps[i]['created_at'] != null
+            ? maps[i]['created_at'] as int
+            : null, // null 안전 처리
       );
     });
+  }
+
+  // 메시지 삭제 메서드 추가
+  Future<void> deleteMessage(String id) async {
+    final db = await database;
+    await db.delete(
+      'messages',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
   }
 }

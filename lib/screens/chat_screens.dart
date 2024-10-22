@@ -50,6 +50,42 @@ class _ChatScreensState extends State<ChatScreens> {
     await _chatDatabase.insertMessage(message);
   }
 
+  void _deleteMessage(types.Message message) async {
+    setState(() {
+      _messages.removeWhere((msg) => msg.id == message.id);
+    });
+
+    await _chatDatabase.deleteMessage(message.id); // 데이터베이스에서 메시지 삭제
+  }
+
+  void _showDeleteConfirmationDialog(
+      BuildContext context, types.Message message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("메시지 삭제"),
+          content: const Text("이 메시지를 삭제하시겠습니까?"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // 다이얼로그 닫기
+              },
+              child: const Text("취소"),
+            ),
+            TextButton(
+              onPressed: () {
+                _deleteMessage(message); // 메시지 삭제 함수 호출
+                Navigator.of(context).pop(); // 다이얼로그 닫기
+              },
+              child: const Text("삭제"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,6 +97,10 @@ class _ChatScreensState extends State<ChatScreens> {
         messages: _messages,
         onSendPressed: (partialText) {
           _sendMessage(partialText.text);
+        },
+        onMessageLongPress: (context, message) {
+          _showDeleteConfirmationDialog(
+              context, message); // 길게 눌렀을 때 삭제 다이얼로그 표시
         },
         user: _user,
       ),

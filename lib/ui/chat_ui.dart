@@ -38,52 +38,39 @@ class ChatUi extends StatelessWidget {
                         context,
                         const ChatScreens(
                           name: "김담율",
-                          userId: "kim_damyul", // userId 추가
                         )),
                   ),
                   ChatWidget(
                     name: "박찬울",
                     lastMessage: "나 방",
                     icon: Icons.account_circle_sharp,
-                    onTap: () => _navigateTo(
-                        context,
-                        const ChatScreens(
-                          name: "박찬울",
-                          userId: "park_chanul", // userId 추가
-                        )),
+                    onTap: () =>
+                        _navigateTo(context, const ChatScreens(name: "박찬울")),
                   ),
                   ChatWidget(
                     name: "이서준",
                     lastMessage: "스나이퍼가 필요해서 니가 좀 도와줘야 겠다",
                     icon: Icons.account_circle_sharp,
-                    onTap: () => _navigateTo(
-                        context,
-                        const ChatScreens(
-                          name: "이서준",
-                          userId: "lee_seojun", // userId 추가
-                        )),
+                    onTap: () =>
+                        _navigateTo(context, const ChatScreens(name: "이서준")),
                   ),
                   ChatWidget(
                     name: "함도욱",
                     lastMessage: "310호 ㄱㄱ",
                     icon: Icons.account_circle_sharp,
-                    onTap: () => _navigateTo(
-                        context,
-                        const ChatScreens(
-                          name: "함도욱",
-                          userId: "ham_dowook", // userId 추가
-                        )),
+                    onTap: () =>
+                        _navigateTo(context, const ChatScreens(name: "함도욱")),
                   ),
                   ChatWidget(
                     name: "이세민",
                     lastMessage: "팩트는 이세민이 건강해지고 있다는 거임",
                     icon: Icons.account_circle_sharp,
                     onTap: () => _navigateTo(
-                        context,
-                        const ChatScreens(
-                          name: "이세민",
-                          userId: "lee_semin", // userId 추가
-                        )),
+                      context,
+                      const ChatScreens(
+                        name: "이세민",
+                      ),
+                    ), // Implement navigation
                   ),
                 ],
               ),

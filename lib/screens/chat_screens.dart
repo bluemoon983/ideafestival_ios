@@ -71,14 +71,26 @@ class _ChatScreensState extends State<ChatScreens> {
               onPressed: () {
                 Navigator.of(context).pop(); // 다이얼로그 닫기
               },
-              child: const Text("취소"),
+              child: const Text(
+                "취소",
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
+                ),
+              ),
             ),
             TextButton(
               onPressed: () {
                 _deleteMessage(message); // 메시지 삭제 함수 호출
                 Navigator.of(context).pop(); // 다이얼로그 닫기
               },
-              child: const Text("삭제"),
+              child: const Text(
+                "삭제",
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.red,
+                ),
+              ),
             ),
           ],
         );
@@ -89,10 +101,6 @@ class _ChatScreensState extends State<ChatScreens> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.name, style: const TextStyle(color: Colors.black)),
-        backgroundColor: Colors.white,
-      ),
       body: Chat(
         messages: _messages,
         onSendPressed: (partialText) {
@@ -103,6 +111,13 @@ class _ChatScreensState extends State<ChatScreens> {
               context, message); // 길게 눌렀을 때 삭제 다이얼로그 표시
         },
         user: _user,
+        theme: const DefaultChatTheme(
+          primaryColor: Colors.black12, // 사용자가 보낸 메시지의 색상
+          receivedMessageBodyTextStyle:
+              TextStyle(color: Colors.black), // 받은 메시지 텍스트 색상
+          sentMessageBodyTextStyle:
+              TextStyle(color: Colors.black), // 보낸 메시지 텍스트 색상
+        ),
       ),
     );
   }

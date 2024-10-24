@@ -47,7 +47,7 @@ class _ShoppingUiState extends State<ShoppingUi> {
           children: [
             Text(product.name, style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 7),
-            Text('\$${product.price}', style: const TextStyle(fontSize: 16)),
+            Text('₩${product.price}', style: const TextStyle(fontSize: 16)),
             const SizedBox(height: 7),
             Text(product.createdAt.toIso8601String(),
                 style: const TextStyle(fontSize: 12, color: Colors.grey)),
@@ -92,9 +92,15 @@ class _ShoppingUiState extends State<ShoppingUi> {
           }
           if (snapshot.hasData) {
             var products = snapshot.data;
-            return ListView(
-              children: List.generate(
-                  products!.length, (index) => _productItem(products[index])),
+            return ListView.builder(
+              itemCount: products!.length * 2 - 1, // Divider 포함한 개수
+              itemBuilder: (context, index) {
+                if (index.isOdd) {
+                  return const Divider(); // 상품 사이에 구분선 추가
+                }
+                final productIndex = index ~/ 2;
+                return _productItem(products[productIndex]);
+              },
             );
           } else {
             return const Center(

@@ -1,7 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:iosgsmarket/src/detail_view.dart';
+import 'package:iosgsmarket/src/model/product.dart';
+import 'package:iosgsmarket/src/repo/sql_product_crud.dart';
 
-class SearchScreens extends StatelessWidget {
+class SearchScreens extends StatefulWidget {
   const SearchScreens({super.key});
+
+  @override
+  _SearchScreensState createState() => _SearchScreensState();
+}
+
+class _SearchScreensState extends State<SearchScreens> {
+  final _searchController = TextEditingController();
+  Product? _searchResult;
+
+  Future<void> _searchProduct(String query) async {
+    // 검색어로 DB 조회
+    List<Product> products = await SqlProductCrud.searchProducts(query);
+
+    // 검색 결과가 있을 경우
+    if (products.isNotEmpty) {
+      setState(() {
+        _searchResult = products.first; // 가장 유사한 상품을 결과로 설정
+      });
+
+      // 상세 페이지로 이동
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DetailView(product: _searchResult!),
+        ),
+      );
+    } else {
+      // 검색 결과가 없을 경우
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('검색 결과가 없습니다.')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +90,7 @@ class SearchScreens extends StatelessWidget {
                 flightShuttleBuilder: (flightContext, animation,
                     flightDirection, fromHeroContext, toHeroContext) {
                   return Material(
-                    color:
-                        Colors.transparent, // Makes the background transparent
+                    color: Colors.transparent,
                     child: ScaleTransition(
                       scale: animation.drive(
                         Tween(begin: 0.8, end: 1.0)
@@ -65,12 +100,16 @@ class SearchScreens extends StatelessWidget {
                     ),
                   );
                 },
-                child: const Material(
+                child: Material(
                   color: Colors.transparent,
                   child: TextField(
-                    decoration: InputDecoration(
+                    controller: _searchController, // 검색어 입력 필드
+                    onSubmitted: (query) {
+                      _searchProduct(query); // 검색어 제출 시 검색 수행
+                    },
+                    decoration: const InputDecoration(
                       contentPadding: EdgeInsets.symmetric(
-                        vertical: 10.0, // Adjusts the height of the search bar
+                        vertical: 10.0,
                         horizontal: 10.0,
                       ),
                       prefixIcon: Icon(Icons.search, color: Colors.black),
@@ -78,13 +117,13 @@ class SearchScreens extends StatelessWidget {
                       hintStyle:
                           TextStyle(color: Colors.black54, fontSize: 16.0),
                       filled: true,
-                      fillColor: Colors.white, // Background color
+                      fillColor: Colors.white,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(10.0),
                         ),
                         borderSide: BorderSide(
-                          color: Colors.black, // Border color
+                          color: Colors.black,
                           width: 2.0,
                         ),
                       ),
@@ -93,7 +132,7 @@ class SearchScreens extends StatelessWidget {
                           Radius.circular(10.0),
                         ),
                         borderSide: BorderSide(
-                          color: Colors.black, // Border color when enabled
+                          color: Colors.black,
                           width: 2.0,
                         ),
                       ),
@@ -102,7 +141,7 @@ class SearchScreens extends StatelessWidget {
                           Radius.circular(10.0),
                         ),
                         borderSide: BorderSide(
-                          color: Colors.black, // Border color when focused
+                          color: Colors.black,
                           width: 2.0,
                         ),
                       ),

@@ -57,7 +57,7 @@ class _DetailViewState extends State<DetailView> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    'Price: \$${product.price.toStringAsFixed(2)}',
+                    'Price: ₩${product.price.toStringAsFixed(2)}',
                     style: const TextStyle(fontSize: 16),
                   ),
                   const SizedBox(height: 10),

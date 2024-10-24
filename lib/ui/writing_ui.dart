@@ -1,7 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:iosgsmarket/src/model/product.dart';
+import 'package:iosgsmarket/src/repo/sql_product_crud.dart';
 
-class WritingWidget extends StatelessWidget {
+class WritingWidget extends StatefulWidget {
   const WritingWidget({super.key});
+
+  @override
+  State<WritingWidget> createState() => _WritingWidgetState();
+}
+
+class _WritingWidgetState extends State<WritingWidget> {
+  final _titleController = TextEditingController();
+  final _priceController = TextEditingController();
+  final _descriptionController = TextEditingController();
+
+  Future<void> _postProduct() async {
+    // 입력된 값 가져오기
+    String title = _titleController.text;
+    double price = double.tryParse(_priceController.text) ?? 0.0;
+    String description = _descriptionController.text;
+
+    if (title.isEmpty || price <= 0 || description.isEmpty) {
+      // 유효성 검사 실패 시 SnackBar 표시
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('모든 필드를 정확히 입력하세요.')),
+      );
+      return;
+    }
+
+    // 새로운 Product 객체 생성
+    Product newProduct = Product(
+      name: title,
+      price: price,
+      description: description,
+      createdAt: DateTime.now(),
+      isSold: false, // 새 상품은 기본적으로 '판매 중' 상태
+    );
+
+    // DB에 저장
+    await SqlProductCrud.create(newProduct);
+
+    // 게시 성공 SnackBar 표시
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('상품이 성공적으로 게시되었습니다.')),
+    );
+  }
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _priceController.dispose();
+    _descriptionController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +112,9 @@ class WritingWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: _titleController,
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: '제목을 입력하세요.',
                 ),
@@ -76,8 +128,9 @@ class WritingWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: _priceController,
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: '가격을 입력하세요.',
                 ),
@@ -92,8 +145,9 @@ class WritingWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: _descriptionController,
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: '상품에 대한 자세한 설명을 입력하세요.',
                 ),
@@ -105,14 +159,13 @@ class WritingWidget extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: _postProduct,
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 0, horizontal: 0),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                        elevation: 5, // Adds shadow effect
+                        padding: const EdgeInsets.all(0), // 패딩 제거로 Ink에서 여백 조정
+                        elevation: 8, // 더 높은 그림자 효과
                       ),
                       child: Ink(
                         decoration: BoxDecoration(
@@ -121,7 +174,14 @@ class WritingWidget extends StatelessWidget {
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              offset: const Offset(0, 4), // 그림자 위치 조정
+                              blurRadius: 10, // 그림자 부드럽게
+                            ),
+                          ],
                         ),
                         child: Container(
                           constraints: const BoxConstraints(
@@ -133,8 +193,9 @@ class WritingWidget extends StatelessWidget {
                             "게시",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
+                              fontSize: 20, // 약간 큰 텍스트
+                              fontWeight: FontWeight.w600, // 텍스트 굵게
+                              letterSpacing: 1.2, // 자간 조정
                             ),
                           ),
                         ),
@@ -146,12 +207,11 @@ class WritingWidget extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 0, horizontal: 0),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                        elevation: 5,
+                        padding: const EdgeInsets.all(0),
+                        elevation: 8,
                       ),
                       child: Ink(
                         decoration: BoxDecoration(
@@ -160,7 +220,14 @@ class WritingWidget extends StatelessWidget {
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              offset: const Offset(0, 4),
+                              blurRadius: 10,
+                            ),
+                          ],
                         ),
                         child: Container(
                           constraints: const BoxConstraints(
@@ -172,8 +239,9 @@ class WritingWidget extends StatelessWidget {
                             "임시 저장",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 1.2,
                             ),
                           ),
                         ),

@@ -103,14 +103,6 @@ class _ShoppingUiState extends State<ShoppingUi> {
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: createdRandomProduct,
-        backgroundColor: Colors.white,
-        child: const Icon(
-          Icons.add,
-          color: Colors.black,
-        ),
-      ),
     );
   }
 }

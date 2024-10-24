@@ -101,6 +101,10 @@ class _ChatScreensState extends State<ChatScreens> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.name, style: const TextStyle(color: Colors.black)),
+        backgroundColor: Colors.white,
+      ),
       body: Chat(
         messages: _messages,
         onSendPressed: (partialText) {

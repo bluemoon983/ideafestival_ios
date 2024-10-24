@@ -1,4 +1,4 @@
-import 'package:iosgsmarket/src/model/sample.dart';
+import 'package:iosgsmarket/src/model/product.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -23,18 +23,19 @@ class SqlDatabase {
 
   Future<void> _initDatabase() async {
     var dataBasePath = await getDatabasesPath();
-    String path = join(dataBasePath, 'sample.db');
+    String path = join(dataBasePath, 'product.db');
     _database = await openDatabase(path, version: 1, onCreate: _databaseCreate);
   }
 
   void _databaseCreate(Database db, int version) async {
     await db.execute('''
-      create table ${Sample.tableName}(
-        ${SampleFields.id} integer primary key autoincrement,
-        ${SampleFields.name} text not null,
-        ${SampleFields.yn} integer not null,
-        ${SampleFields.value} double not null,
-        ${SampleFields.createdAt} text not null
+      CREATE TABLE ${Product.tableName}(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        price DOUBLE NOT NULL,
+        description TEXT NOT NULL,
+        isSold INTEGER NOT NULL,
+        createdAt TEXT NOT NULL
       )
     ''');
   }

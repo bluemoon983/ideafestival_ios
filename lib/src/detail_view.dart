@@ -32,7 +32,7 @@ class _DetailViewState extends State<DetailView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.product.name)),
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: FutureBuilder<Product?>(
@@ -51,30 +51,30 @@ class _DetailViewState extends State<DetailView> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    "Name: ${product.name}",
+                    product.name,
                     style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
+                        fontSize: 30, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   Text(
-                    'Price: ₩${product.price.toStringAsFixed(2)}',
+                    '가격: ${product.price.toInt()}원',
                     style: const TextStyle(fontSize: 16),
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    'Description: ${product.description}',
+                    '설명: ${product.description}',
                     style: const TextStyle(fontSize: 16),
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    'Status: ${product.isSold ? 'Sold' : 'Available'}',
+                    '재고 상태: ${product.isSold ? '판매완료' : '판매중'}',
                     style: TextStyle(
                         fontSize: 16,
                         color: product.isSold ? Colors.red : Colors.green),
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    "Created At: ${product.createdAt.toIso8601String()}",
+                    "판매 날짜: ${product.createdAt.toIso8601String()}",
                     style: const TextStyle(fontSize: 16),
                   ),
                   const SizedBox(height: 20),

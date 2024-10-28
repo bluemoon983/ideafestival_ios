@@ -47,12 +47,13 @@ class _ShoppingUiState extends State<ShoppingUi> {
           children: [
             Text(product.name, style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 7),
-            Text('₩${product.price}', style: const TextStyle(fontSize: 16)),
+            Text('${product.price.toInt()}원',
+                style: const TextStyle(fontSize: 16)),
             const SizedBox(height: 7),
             Text(product.createdAt.toIso8601String(),
                 style: const TextStyle(fontSize: 12, color: Colors.grey)),
             const SizedBox(height: 7),
-            Text(product.isSold ? 'Sold' : 'Available',
+            Text(product.isSold ? '판매완료' : '판매중',
                 style: TextStyle(
                     color: product.isSold ? Colors.red : Colors.green)),
           ],

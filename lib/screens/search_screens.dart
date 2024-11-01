@@ -15,10 +15,8 @@ class _SearchScreensState extends State<SearchScreens> {
   List<Product> _searchResults = [];
 
   Future<void> _searchProduct(String query) async {
-    // 검색어로 DB 조회
     List<Product> products = await SqlProductCrud.searchProducts(query);
 
-    // 검색 결과가 업데이트될 때 setState 호출
     setState(() {
       _searchResults = products;
     });
@@ -60,8 +58,9 @@ class _SearchScreensState extends State<SearchScreens> {
                     color: Colors.transparent,
                     child: ScaleTransition(
                       scale: animation.drive(
-                        Tween(begin: 0.8, end: 1.0)
-                            .chain(CurveTween(curve: Curves.easeInOut)),
+                        Tween(begin: 0.8, end: 1.0).chain(
+                          CurveTween(curve: Curves.easeInOut),
+                        ),
                       ),
                       child: toHeroContext.widget,
                     ),
@@ -124,7 +123,8 @@ class _SearchScreensState extends State<SearchScreens> {
                       },
                     )
                   : const Center(
-                      child: Text('검색 결과가 없습니다.')), // 검색 결과가 없을 경우 메시지
+                      child: Text('검색 결과가 없습니다.'),
+                    ),
             ],
           ),
         ),

@@ -3,8 +3,8 @@ import 'package:iosgsmarket/screens/alarm_screens.dart';
 import 'package:iosgsmarket/screens/login_screens.dart';
 import 'package:iosgsmarket/screens/mypage_screens.dart';
 import 'package:iosgsmarket/screens/search_screens.dart';
-import 'package:iosgsmarket/src/shopping_ui.dart';
 import 'package:iosgsmarket/ui/chat_ui.dart';
+import 'package:iosgsmarket/ui/shopping_ui.dart';
 import 'package:iosgsmarket/ui/writing_ui.dart';
 
 class MainScreens extends StatelessWidget {
@@ -33,7 +33,7 @@ class MainScreens extends StatelessWidget {
           children: <Widget>[
             _HomeTab(),
             ShoppingUi(),
-            WritingWidget(),
+            WritingUi(),
             ChatUi(),
           ],
         ),
@@ -102,7 +102,7 @@ class MainScreens extends StatelessWidget {
           _buildDrawerItem(
             icon: Icons.notifications_active,
             text: "알림",
-            onTap: () => _navigateTo(context, AlarmScreens()),
+            onTap: () => _navigateTo(context, const AlarmScreens()),
           ),
           _buildDrawerItem(
             icon: Icons.login_outlined,
@@ -260,15 +260,6 @@ class _HomeTabState extends State<_HomeTab> with TickerProviderStateMixin {
                 ),
               ],
             ),
-            const SizedBox(height: 60),
-            const Text(
-              "hood",
-              style: TextStyle(
-                fontSize: 23,
-                fontWeight: FontWeight.w900,
-              ),
-            ),
-            Image.asset('assets/images/hoood.jpg'),
           ],
         ),
       ),

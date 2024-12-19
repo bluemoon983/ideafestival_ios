@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SearchScreens extends StatelessWidget {
-  const SearchScreens({super.key});
+class ShoppingUi extends StatelessWidget {
+  const ShoppingUi({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -24,7 +24,8 @@ dependencies:
   chat_bubbles: ^1.4.0
   path_provider: ^2.1.4
   shared_preferences: ^2.3.2
-  cloud_firestore: ^4.9.0 # Firestore를 사용할 경우 추가
+  cloud_firestore: ^4.9.0
+  flutter_web_auth: ^0.6.0
 
 
 

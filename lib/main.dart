@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:iosgsmarket/screens/main_screens.dart';
+import 'package:iosgsmarket/src/screens/main_screens.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

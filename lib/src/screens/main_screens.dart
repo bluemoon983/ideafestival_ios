@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iosgsmarket/src/screens/alarm_screens.dart';
+import 'package:iosgsmarket/src/screens/help_screens.dart';
 import 'package:iosgsmarket/src/screens/login_screens.dart';
 import 'package:iosgsmarket/src/screens/mypage_screens.dart';
 import 'package:iosgsmarket/src/screens/search_screens.dart';
+import 'package:iosgsmarket/src/screens/settings_screens.dart';
 import 'package:iosgsmarket/src/ui/chat_ui.dart';
 import 'package:iosgsmarket/src/ui/shopping_ui.dart';
 import 'package:iosgsmarket/src/ui/writing_ui.dart';
@@ -95,9 +97,14 @@ class MainScreens extends StatelessWidget {
             onTap: () => Navigator.pop(context),
           ),
           _buildDrawerItem(
-            icon: Icons.search,
-            text: '검색',
-            onTap: () => _navigateTo(context, const SearchScreens()),
+            icon: Icons.settings,
+            text: '설정',
+            onTap: () => _navigateTo(context, const SettingsScreens()),
+          ),
+          _buildDrawerItem(
+            icon: Icons.help,
+            text: '도움말',
+            onTap: () => _navigateTo(context, const HelpScreens()),
           ),
           _buildDrawerItem(
             icon: Icons.notifications_active,

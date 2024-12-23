@@ -26,6 +26,8 @@ dependencies:
   shared_preferences: ^2.3.2
   cloud_firestore: ^4.9.0
   flutter_web_auth: ^0.6.0
+  flutter_native_splash: ^2.4.3
+
 
 
 
@@ -38,4 +40,4 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
+    - lib/assets/Ralo.png

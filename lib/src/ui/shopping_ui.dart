@@ -7,7 +7,13 @@ class ShoppingUi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('쇼핑하기'),
+        title: const Text(
+          '쇼핑하기',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+          ),
+        ),
         centerTitle: true,
       ),
       body: Padding(

@@ -47,6 +47,7 @@ class MainScreens extends StatelessWidget {
     return PreferredSize(
       preferredSize: const Size.fromHeight(70.0),
       child: AppBar(
+        automaticallyImplyLeading: false, // 뒤로가기 버튼 제거
         shape: const Border(
           bottom: BorderSide(color: Colors.black, width: 1),
         ),

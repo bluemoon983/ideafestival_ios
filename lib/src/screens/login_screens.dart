@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iosgsmarket/src/screens/join_screens.dart';
 import 'package:iosgsmarket/src/screens/main_screens.dart';
 
 class LoginScreens extends StatelessWidget {
@@ -86,7 +87,13 @@ class LoginScreens extends StatelessWidget {
             const SizedBox(height: 16),
             TextButton(
               onPressed: () {
-                // 회원가입 버튼 동작 구현
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        const JoinScreens(), // MainScreen으로 이동
+                  ),
+                );
               },
               style: TextButton.styleFrom(
                 foregroundColor: Colors.white,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iosgsmarket/src/screens/chat_screens.dart';
 
 class ChatUi extends StatelessWidget {
   const ChatUi({super.key});
@@ -43,8 +44,7 @@ class ChatUi extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          ChatDetailScreen(chatRoom['title']!),
+                      builder: (context) => ChatScreens(chatRoom['title']!),
                     ),
                   );
                 },
@@ -53,24 +53,6 @@ class ChatUi extends StatelessWidget {
             ],
           );
         },
-      ),
-    );
-  }
-}
-
-class ChatDetailScreen extends StatelessWidget {
-  final String title;
-
-  const ChatDetailScreen(this.title, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: const Center(
-        child: Text('채팅 화면 구현 예정'),
       ),
     );
   }

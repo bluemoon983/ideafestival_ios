@@ -20,13 +20,15 @@ dependencies:
   uuid: ^3.0.6
   flutter_chat_ui: ^1.6.15
   file_picker: ^8.1.2
-  flutter_chat_types: ^3.6.2
-  chat_bubbles: ^1.4.0
   path_provider: ^2.1.4
   shared_preferences: ^2.3.2
   cloud_firestore: ^4.9.0
   flutter_web_auth: ^0.6.0
   flutter_native_splash: ^2.4.3
+  flutter_chat_types: ^4.2.0
+  chat_bubbles: ^1.6.0
+
+
 
 
 

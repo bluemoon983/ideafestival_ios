@@ -25,7 +25,6 @@ dependencies:
   cloud_firestore: ^4.9.0
   flutter_web_auth: ^0.6.0
   flutter_native_splash: ^2.4.3
-  flutter_chat_types: ^4.2.0
   chat_bubbles: ^1.6.0
 
 

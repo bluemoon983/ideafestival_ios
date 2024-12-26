@@ -15,6 +15,7 @@ class ChatUi extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false, // 뒤로가기 버튼 제거
         title: const Text(
           '채팅',
           style: TextStyle(

@@ -7,6 +7,7 @@ class ShoppingUi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false, // 뒤로가기 버튼 제거
         title: const Text(
           '쇼핑하기',
           style: TextStyle(

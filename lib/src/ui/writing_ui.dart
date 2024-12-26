@@ -7,6 +7,7 @@ class WritingUi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false, // 뒤로가기 버튼 제거
         title: const Text(
           '상품 등록',
           style: TextStyle(

@@ -71,12 +71,15 @@ class _ChatScreensState extends State<ChatScreens> {
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.symmetric(vertical: 2),
       decoration: BoxDecoration(
-        color: Colors.grey[200],
+        color: Colors.black, // 말풍선 배경색을 검정으로 설정
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(
         message.metadata?['text'] ?? 'Custom Message',
-        style: const TextStyle(fontSize: 14),
+        style: const TextStyle(
+          fontSize: 14,
+          color: Colors.white, // 텍스트 색상을 흰색으로 설정
+        ),
       ),
     );
   }

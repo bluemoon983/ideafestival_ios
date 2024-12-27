@@ -12,20 +12,20 @@ class HelpScreens extends StatelessWidget {
       body: ListView(
         children: const [
           QnAItem(
-            question: 'Q1. 이 앱은 어떤 기능을 제공하나요?',
-            answer: 'A. 이 앱은 사용자에게 다양한 기능을 제공하며, 간편한 UI로 빠른 작업을 도와줍니다.',
+            question: 'Q. 질문',
+            answer: 'A. -설명',
           ),
           QnAItem(
-            question: 'Q2. 계정을 어떻게 생성하나요?',
-            answer: 'A. 메인 화면에서 "회원가입" 버튼을 눌러 간단한 정보를 입력하면 계정을 생성할 수 있습니다.',
+            question: 'Q. 질문',
+            answer: 'A. -설명',
           ),
           QnAItem(
-            question: 'Q3. 비밀번호를 잊어버렸어요. 어떻게 해야 하나요?',
-            answer: 'A. 로그인 화면에서 "비밀번호 찾기"를 클릭하여 이메일을 입력하면 재설정 링크를 받을 수 있습니다.',
+            question: 'Q. 질문',
+            answer: 'A. -설명',
           ),
           QnAItem(
-            question: 'Q4. 고객 지원에 어떻게 연락할 수 있나요?',
-            answer: 'A. 설정 화면에서 "고객 지원" 버튼을 눌러 문의를 남길 수 있습니다.',
+            question: 'Q. 질문',
+            answer: 'A. -설명',
           ),
         ],
       ),

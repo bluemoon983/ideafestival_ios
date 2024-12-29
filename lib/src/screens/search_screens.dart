@@ -1,7 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:iosgsmarket/src/db/database_crud.dart';
+import 'package:sqflite/sqflite.dart';
 
-class SearchScreens extends StatelessWidget {
+class SearchScreens extends StatefulWidget {
   const SearchScreens({super.key});
+
+  @override
+  State<SearchScreens> createState() => _SearchScreensState();
+}
+
+class _SearchScreensState extends State<SearchScreens> {
+  TextEditingController searchController = TextEditingController();
+  List<Map<String, dynamic>> filteredProducts = [];
+
+  // 검색어가 변경될 때마다 호출되는 함수
+  void _searchProducts(String query) async {
+    if (query.isEmpty) {
+      filteredProducts = await ProductDatabase.instance.readAllProducts();
+    } else {
+      filteredProducts = await ProductDatabase.instance.searchProducts(query);
+    }
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,40 +35,42 @@ class SearchScreens extends StatelessWidget {
         child: Column(
           children: [
             TextField(
-              decoration: InputDecoration(
+              controller: searchController,
+              decoration: const InputDecoration(
                 hintText: '검색어를 입력하세요',
-                prefixIcon: const Icon(Icons.search),
+                prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
                 ),
               ),
-              onChanged: (value) {
-                // 검색어 입력 이벤트 처리
-              },
+              onChanged: _searchProducts, // 검색어 변경 시 호출
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: ListView.builder(
-                itemCount: 10, // 샘플 데이터 수 (필요시 변경)
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    leading: Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: const Icon(Icons.image, color: Colors.grey),
+              child: filteredProducts.isEmpty
+                  ? const Center(child: Text('검색 결과가 없습니다.'))
+                  : ListView.builder(
+                      itemCount: filteredProducts.length,
+                      itemBuilder: (context, index) {
+                        final product = filteredProducts[index];
+                        return ListTile(
+                          leading: Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Icon(Icons.image, color: Colors.grey),
+                          ),
+                          title: Text(product['name']),
+                          subtitle: Text('₩${product['price']}'),
+                          onTap: () {
+                            // 상품 상세 페이지로 이동하거나 다른 작업을 추가할 수 있음
+                          },
+                        );
+                      },
                     ),
-                    title: Text('상품 이름 $index'),
-                    subtitle: Text('상품 설명 $index'),
-                    onTap: () {
-                      // 검색 결과 항목 클릭 이벤트 처리
-                    },
-                  );
-                },
-              ),
             ),
           ],
         ),

@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:iosgsmarket/src/db/database_crud.dart';
+import 'package:sqflite/sqflite.dart';
 
 class WritingUi extends StatelessWidget {
   const WritingUi({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController nameController = TextEditingController();
+    final TextEditingController priceController = TextEditingController();
+    final TextEditingController descriptionController = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false, // 뒤로가기 버튼 제거
+        automaticallyImplyLeading: false,
         title: const Text(
           '상품 등록',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 25,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
       ),
@@ -50,8 +53,9 @@ class WritingUi extends StatelessWidget {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: nameController,
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: '상품 이름을 입력하세요',
                 ),
@@ -62,9 +66,10 @@ class WritingUi extends StatelessWidget {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
-              const TextField(
+              TextField(
+                controller: priceController,
                 keyboardType: TextInputType.number,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: '가격을 입력하세요',
                 ),
@@ -75,9 +80,10 @@ class WritingUi extends StatelessWidget {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
-              const TextField(
+              TextField(
+                controller: descriptionController,
                 maxLines: 5,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: '상품 설명을 입력하세요',
                 ),
@@ -98,8 +104,20 @@ class WritingUi extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    onPressed: () {
-                      // 상품 등록 로직 추가
+                    onPressed: () async {
+                      final newProduct = {
+                        'name': nameController.text,
+                        'description': descriptionController.text,
+                        'price': int.parse(priceController.text),
+                        'isWished': false, // 기본적으로 찜되지 않음
+                      };
+
+                      await ProductDatabase.instance.createProduct(newProduct);
+
+                      // 상품 등록 후 메시지 표시
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('상품 등록')),
+                      );
                     },
                     child: const Text('상품 등록'),
                   ),

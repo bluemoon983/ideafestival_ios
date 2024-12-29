@@ -46,11 +46,6 @@ class ProductDatabase {
     return await db.insert('products', product);
   }
 
-  Future<List<Map<String, dynamic>>> readAllProducts() async {
-    final db = await instance.database;
-    return await db.query('products');
-  }
-
   Future<int> updateProduct(Map<String, dynamic> product) async {
     final db = await instance.database;
     return await db.update(
@@ -73,5 +68,20 @@ class ProductDatabase {
   Future close() async {
     final db = await instance.database;
     db.close();
+  }
+
+  Future<List<Map<String, dynamic>>> searchProducts(String query) async {
+    final db = await instance.database;
+    return await db.query(
+      'products',
+      where: 'name LIKE ?',
+      whereArgs: ['%$query%'],
+    );
+  }
+
+  // 모든 상품을 읽는 함수
+  Future<List<Map<String, dynamic>>> readAllProducts() async {
+    final db = await instance.database;
+    return await db.query('products');
   }
 }

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:iosgsmarket/src/screens/login_screens.dart';
+import 'package:iosgsmarket/src/screens/trade_screens.dart';
+import 'package:iosgsmarket/src/screens/user_settings.dart';
+import 'package:iosgsmarket/src/screens/wish_screens.dart';
 
 class MypageScreens extends StatelessWidget {
   const MypageScreens({super.key});
@@ -53,7 +57,10 @@ class MypageScreens extends StatelessWidget {
               leading: const Icon(Icons.shopping_cart),
               title: const Text('내 거래 내역'),
               onTap: () {
-                // 거래 내역 화면으로 이동
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const TradeScreens()),
+                );
               },
             ),
             ListTile(
@@ -61,7 +68,10 @@ class MypageScreens extends StatelessWidget {
               leading: const Icon(Icons.favorite),
               title: const Text('찜한 상품'),
               onTap: () {
-                // 찜한 상품 화면으로 이동
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const WishScreens()),
+                );
               },
             ),
             ListTile(
@@ -69,14 +79,26 @@ class MypageScreens extends StatelessWidget {
               leading: const Icon(Icons.settings),
               title: const Text('설정'),
               onTap: () {
-                // 설정 화면으로 이동
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const UserSettings()),
+                );
               },
             ),
             ListTile(
               contentPadding: const EdgeInsets.symmetric(vertical: 8.0),
               leading: const Icon(Icons.logout),
-              title: const Text("로그아웃"),
-              onTap: () {},
+              title: const Text(
+                "로그아웃",
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginScreens(),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 20),
             const Divider(),

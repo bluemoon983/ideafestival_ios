@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:iosgsmarket/src/screens/main_screens.dart';
+import 'package:iosgsmarket/src/screens/login_screens.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   runApp(const App());
 }
 
@@ -30,14 +27,15 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _navigateToMain();
+    _navigateToLogin();
   }
 
-  Future<void> _navigateToMain() async {
+  Future<void> _navigateToLogin() async {
     await Future.delayed(const Duration(seconds: 3)); // 3초 대기
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const MainScreens()),
+      MaterialPageRoute(
+          builder: (context) => const LoginScreens()), // LoginScreens로 이동
     );
   }
 

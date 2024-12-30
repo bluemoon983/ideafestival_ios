@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iosgsmarket/src/db/database_crud.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:iosgsmarket/src/screens/shopping_detail_screens.dart';
 
 class ShoppingUi extends StatelessWidget {
   const ShoppingUi({super.key});
@@ -44,9 +44,18 @@ class ShoppingUi extends StatelessWidget {
               itemCount: products.length,
               itemBuilder: (context, index) {
                 final product = products[index];
+                bool isWished = product['isWished'] == 1;
+
                 return GestureDetector(
                   onTap: () {
                     // 상품 상세 페이지로 이동
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ShoppingDetailPage(product: product),
+                      ),
+                    );
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -93,6 +102,30 @@ class ShoppingUi extends StatelessWidget {
                                 ),
                               ),
                             ],
+                          ),
+                        ),
+                        Positioned(
+                          top: 8,
+                          right: 8,
+                          child: IconButton(
+                            icon: Icon(
+                              isWished ? Icons.favorite : Icons.favorite_border,
+                              color: isWished ? Colors.red : Colors.grey,
+                            ),
+                            onPressed: () {
+                              // 찜 상태 변경
+                              ProductDatabase.instance.updateProduct({
+                                'id': product['id'],
+                                'name': product['name'],
+                                'description': product['description'],
+                                'price': product['price'],
+                                'image': product['image'],
+                                'isWished': isWished ? 0 : 1, // 찜 상태 반전
+                              });
+
+                              // 화면 갱신
+                              setState(() {});
+                            },
                           ),
                         ),
                       ],

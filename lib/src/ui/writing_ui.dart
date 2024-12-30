@@ -112,12 +112,18 @@ class WritingUi extends StatelessWidget {
                         'isWished': false, // 기본적으로 찜되지 않음
                       };
 
+                      // 상품 등록
                       await ProductDatabase.instance.createProduct(newProduct);
 
                       // 상품 등록 후 메시지 표시
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('상품 등록')),
                       );
+
+                      // 텍스트 필드 초기화
+                      nameController.clear();
+                      priceController.clear();
+                      descriptionController.clear();
                     },
                     child: const Text('상품 등록'),
                   ),

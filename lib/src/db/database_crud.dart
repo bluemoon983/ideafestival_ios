@@ -59,9 +59,9 @@ class ProductDatabase {
   Future<int> deleteProduct(int id) async {
     final db = await instance.database;
     return await db.delete(
-      'products',
-      where: 'id = ?',
-      whereArgs: [id],
+      'products', // 테이블 이름
+      where: 'id = ?', // 조건
+      whereArgs: [id], // 조건에 해당하는 값
     );
   }
 
@@ -79,9 +79,20 @@ class ProductDatabase {
     );
   }
 
-  // 모든 상품을 읽는 함수
   Future<List<Map<String, dynamic>>> readAllProducts() async {
     final db = await instance.database;
-    return await db.query('products');
+    final result = await db.query('products');
+
+    // null 체크 후 반환
+    return result.map((product) {
+      return {
+        'id': product['id'] ?? 0, // null일 경우 기본값 0
+        'name': product['name'] ?? '이름 없음', // null일 경우 기본값 '이름 없음'
+        'price': product['price'] ?? 0, // null일 경우 기본값 0
+        'description': product['description'] ?? '설명 없음',
+        'image': product['image'] ?? '',
+        'isWished': product['isWished'] ?? 0,
+      };
+    }).toList();
   }
 }

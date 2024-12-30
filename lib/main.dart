@@ -42,8 +42,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
-        child: Image.asset('lib/assets/Ralo.png'), // 스플래시 로고
+        child: Image.asset('lib/assets/gsm.png'), // 스플래시 로고
       ),
     );
   }

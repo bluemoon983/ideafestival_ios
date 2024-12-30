@@ -32,7 +32,7 @@ class MypageScreens extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '사용자 이름',
+                      'Damyul',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -40,7 +40,7 @@ class MypageScreens extends StatelessWidget {
                     ),
                     SizedBox(height: 4),
                     Text(
-                      '이메일@example.com',
+                      'ekadbf@example.com',
                       style: TextStyle(color: Colors.grey),
                     ),
                   ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iosgsmarket/src/db/database_crud.dart';
+import 'package:iosgsmarket/src/db/database_crud.dart'; // 데이터베이스 CRUD 클래스
 
 class ShoppingDetailPage extends StatelessWidget {
   final Map<String, dynamic> product;
@@ -8,84 +8,55 @@ class ShoppingDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 상품의 찜 상태
-    bool isWished = product['isWished'] == 1;
+    // null 체크: null일 경우 기본값을 제공
+    final productName = product['name'] ?? '이름 없음';
+    final productPrice = product['price'] ?? 0; // 가격 기본값 설정
+    final productDescription = product['description'] ?? '설명 없음';
+    final productImage = product['image'] ?? ''; // 이미지 기본값 설정
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(product['name']),
-        centerTitle: true,
+        title: Text(productName),
+        actions: [
+          // 삭제 버튼
+          IconButton(
+            icon: const Icon(Icons.delete),
+            onPressed: () async {
+              // 상품 삭제
+              await ProductDatabase.instance.deleteProduct(product['id']);
+
+              // 삭제 후 이전 화면으로 돌아가기
+              Navigator.pop(context);
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 상품 이미지
-            Container(
-              width: double.infinity,
-              height: 250,
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Image.network(
-                product['image'],
-                fit: BoxFit.cover,
-              ),
-            ),
             const SizedBox(height: 16),
-            // 상품 이름
             Text(
-              product['name'],
+              productName,
               style: const TextStyle(
-                fontSize: 24,
                 fontWeight: FontWeight.bold,
+                fontSize: 24,
               ),
             ),
             const SizedBox(height: 8),
-            // 상품 가격
             Text(
-              '₩${product['price']}',
+              '₩$productPrice',
               style: const TextStyle(
-                fontSize: 20,
                 color: Colors.green,
                 fontWeight: FontWeight.bold,
+                fontSize: 20,
               ),
             ),
-            const SizedBox(height: 16),
-            // 상품 설명
+            const SizedBox(height: 8),
             Text(
-              product['description'],
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.black54,
-              ),
-            ),
-            const SizedBox(height: 16),
-            // 찜 버튼
-            Align(
-              alignment: Alignment.centerRight,
-              child: IconButton(
-                icon: Icon(
-                  isWished ? Icons.favorite : Icons.favorite_border,
-                  color: isWished ? Colors.red : Colors.grey,
-                ),
-                onPressed: () {
-                  // 찜 상태 변경
-                  ProductDatabase.instance.updateProduct({
-                    'id': product['id'],
-                    'name': product['name'],
-                    'description': product['description'],
-                    'price': product['price'],
-                    'image': product['image'],
-                    'isWished': isWished ? 0 : 1, // 찜 상태 반전
-                  });
-
-                  // 화면 갱신
-                  Navigator.pop(context);
-                },
-              ),
+              productDescription,
+              style: const TextStyle(fontSize: 16),
             ),
           ],
         ),
